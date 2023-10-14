@@ -1,7 +1,5 @@
 import pandas as pd
 import geopandas as gpd
-import seaborn as sns
-
 
 def carregar_dataframes():
     """

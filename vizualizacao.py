@@ -1,14 +1,12 @@
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
-import pandas as pd
 
-"""Módulo para a vizualização dos dados"""
+def definir_rotulos(titulo, eixo_x, eixo_y) :
+    plt.title(titulo)
+    plt.xlabel(eixo_x)
+    plt.ylabel(eixo_y)
 
-def labels(x_label, y_label) :
-    plt.xlabel(x_label)
-    plt.ylabel(y_label)
-
-    return
+    return None
 
 
 def plot_barras(oritentaco, rotulos, valores):
@@ -40,7 +38,9 @@ def plot_barras(oritentaco, rotulos, valores):
         return plt.bar(rotulos,valores)
     else :
         return plt.barh(rotulos,valores)
-    return 0
+
+    return None
+
 
 def plot_mapa_uf(gdf_obitos_uf):
     """
@@ -55,11 +55,11 @@ def plot_mapa_uf(gdf_obitos_uf):
     if gdf_obitos_uf is None:
         # Verifica se o GeoDataFrame foi gerado corretamente
         print("O GeoDataFrame não foi gerado corretamente. Não é possível gerar o mapa.")
-        return
+        return None
 
     try:
         # Define um novo mapa de cores indo
-        cores_extemos = [(1,0.65,0.65),(0.6,0,0)] # Lista de cores RGB
+        cores_extemos = [(1,0.85,0.85),(0.7,0.1,0.1)] # Lista de cores RGB
         gradiente_cores = (mcolors.LinearSegmentedColormap.
                            from_list("gradiente_vermelho",cores_extemos ,256))
 
@@ -71,3 +71,4 @@ def plot_mapa_uf(gdf_obitos_uf):
     except Exception as e:
         # Trata exceção se ocorrer um erro inesperado durante a geração do mapa
         print(f"Erro durante a geração do mapa: {e}")
+        return None
