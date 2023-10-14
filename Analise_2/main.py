@@ -1,5 +1,5 @@
-import utils
-import vizualizacao as viz
+import Analise_2.utils as utils
+import Analise_2.vizualizacao as viz
 import matplotlib.pyplot as plt
 
 # Carregamento das bases de dados
