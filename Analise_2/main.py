@@ -18,4 +18,3 @@ viz.plotar_mortes_por_mes(df_meses)
 # PERGUNTA 2-c) Há alguma relação entre a letalidade da doença e o passar do tempo?
 df_letalidade = td.organizar_df_letalidade(ocorrencias_por_ano)
 viz.plotar_letalidade(df_letalidade)
-print(df_letalidade)

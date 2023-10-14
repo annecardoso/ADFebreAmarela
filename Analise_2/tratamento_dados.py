@@ -1,80 +1,113 @@
 import pandas as pd
 from pathlib import Path
 
-def carregar_dataframes() -> None:
+def carregar_DataFrames() -> pd.DataFrame:
     """
-    Carrega DataFrames a partir de arquivos CSV
+    Carrega um DataFrame a partir de um arquivo CSV.
 
-    Parâmetros
-    ----------
-    None
-
-    Retorno
-    -------
-    Tuple
-        Um par de DataFrames contendo dados de óbitos e informações geoespaciais dos estados.
+    Returns:
+        pd.DataFrame: O DataFrame carregado com os dados ou None se houver um erro.
     """
     try:
-        # Tenta carregar um DataFrame a partir de um arquivo CSV
-        raiz_do_projeto = str(Path(__file__).parent.parent) # Caminho absoluto até a raiz do projeto
+        # Obtém o caminho para o arquivo com os dados da Febre Amarela
+        raiz_do_projeto = str(Path(__file__).parent.parent)
         caminho_arquivo_FA = raiz_do_projeto + '/Dados/fa_casoshumanos_1994-2021.csv'
 
+        # Tenta carregar um DataFrame a partir de um arquivo CSV
         df = pd.read_csv(caminho_arquivo_FA, sep=';', encoding='ISO-8859-1')
-        
+        return df
     except FileNotFoundError as e:
         # Trata exceção se o arquivo CSV não for encontrado
         print(f"Erro ao carregar o arquivo CSV: {e}")
-        df = None
-
-    return df
-
+        return None
 
 def organizar_df_datas(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Separa e transforma um DataFrame com informações de datas, óbitos e infecções.
+    Faz um tratamento no DataFrame para que tenha apenas as informações de datas, óbitos e infecções.
 
-    Parâmetros
-    ----------
-    df : pandas.DataFrame
-        DataFrame contendo as informações de datas e óbitos.
+    Args:
+        df (pd.DataFrame): DataFrame contendo as informações de datas e óbitos.
 
-    Returno
-    -------
-    pandas.DataFrame
-        Um novo DataFrame com as datas no formato desejado e a contagem de óbitos e infectados.
+    Returns:
+        pd.DataFrame: Um novo DataFrame com as datas no formato desejado e a contagem de óbitos e infectados.
     """
-    # Converte a coluna 'OBITO' em valores binários (0 ou 1)
-    df['OBITO'] = df['OBITO'].apply(lambda x: 1 if x == 'SIM' else 0)
-    df_datas = df[['ANO_IS', 'MES_IS', 'OBITO']]  # Cria um novo DataFrame com as informações pertinentes
-    df_datas.insert(2, 'INFECTADOS', 1, True)  # Adiciona uma coluna para guardar a quantidade de infectados
-    df_datas = df_datas.groupby(['ANO_IS', 'MES_IS']).sum()  # Agrupa o DataFrame por ano e mês
-    df_datas = df_datas.reset_index()  # Como o DataFrame é reduzido, convém redefinir os índices
+    try:
+        # Converte a coluna 'OBITO' em valores binários (0 ou 1)
+        df['OBITO'] = df['OBITO'].apply(lambda x: 1 if x == 'SIM' else 0)
+        df_datas = df[['ANO_IS', 'MES_IS', 'OBITO']]
+        df_datas.insert(2, 'INFECTADOS', 1, True)  # Adiciona uma coluna para guardar a quantidade de infectados
+        df_datas = df_datas.groupby(['ANO_IS', 'MES_IS']).sum()  # Agrupa o DataFrame por ano e mês
+        df_datas = df_datas.reset_index()
+        return df_datas
+    except KeyError as e:
+        # Trata exceção se as colunas necessárias não estiverem presentes no DataFrame
+        print(f"Erro ao organizar DataFrame: {e}")
+        return None
 
-    return df_datas
+def organizar_df_ano(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Organiza um DataFrame relacionando à cada ano uma quantidade de casos e mortes por febre amarela.
 
+    Args:
+        df (pd.DataFrame): DataFrame contendo informações de datas, infecções e mortes.
 
-def organizar_df_ano(df:pd.DataFrame) -> pd.DataFrame:
-    df = df.drop(columns=['MES_IS'])
-    df = df.groupby(['ANO_IS']).sum()
-    df = df.reset_index()
+    Returns:
+        pd.DataFrame: Um novo DataFrame com o número de infectados e mortos por ano.
+    """
+    try:
+        df = df.drop(columns=['MES_IS'])
+        df = df.groupby(['ANO_IS']).sum()
+        df = df.reset_index()
+        return df
+    except KeyError as e:
+        # Trata exceção se as colunas necessárias não estiverem presentes no DataFrame
+        print(f"Erro ao organizar DataFrame: {e}")
+        return None
 
-    return df
+def organizar_df_mes(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Organiza o DataFrame para facilitar uma análise específica. No caso, os dados são reduzidos
+    ao total de infeções e óbitos em relação aos meses do ano.
 
-def organizar_df_mes(df:pd.DataFrame) -> pd.DataFrame:
-    df = df.drop(columns=['ANO_IS'])
-    df = df.groupby(['MES_IS']).sum()
-    df = df.reset_index()
+    Args:
+        df (pd.DataFrame): DataFrame contendo informações de datas, infecções e óbitos.
 
-    # Altera a coluna MES_IS para conter os meses em texto
-    meses = {1.0: 'janeiro', 2.0: 'fevereiro', 3.0: 'março', 4.0: 'abril', 5.0: 'maio', 6.0: 'junho',
-             7.0: 'julho', 8.0: 'agosto', 9.0: 'setembro', 10.0: 'outubro', 11.0: 'novembro', 12.0: 'dezembro'}
+    Returns:
+        pd.DataFrame: Um novo DataFrame com a contagem de óbitos e infecções em cada mês.
+    """
+    try:
+        df = df.drop(columns=['ANO_IS'])
+        df = df.groupby(['MES_IS']).sum() # Agrupamento por meses e cálculo do total de mortos e infectados
+        df = df.reset_index()
 
-    df['MES_IS'] = df['MES_IS'].map(meses)
+        # Dicionário que relaciona o número dos meses aos seus nomes
+        meses = {1.0: 'janeiro', 2.0: 'fevereiro', 3.0: 'março', 4.0: 'abril', 5.0: 'maio', 6.0: 'junho',
+                 7.0: 'julho', 8.0: 'agosto', 9.0: 'setembro', 10.0: 'outubro', 11.0: 'novembro', 12.0: 'dezembro'}
+        # Altera a coluna MES_IS para conter os meses em texto
+        df['MES_IS'] = df['MES_IS'].map(meses)
 
-    return df
+        return df
+    except KeyError as e:
+        # Trata exceção se as colunas necessárias não estiverem presentes no DataFrame
+        print(f"Erro ao organizar DataFrame: {e}")
+        return None
 
-def organizar_df_letalidade(df:pd.DataFrame) -> pd.DataFrame:
-    df['LETALIDADE'] = df['OBITO'] / df['INFECTADOS']
-    df = df.drop(columns=['INFECTADOS'])
-    df = df.drop(columns=['OBITO'])
-    return df
+def organizar_df_letalidade(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Organiza o DataFrame para facilitar uma análise específica. Para isso,
+    há a exclusão de colunas e adição de uma coluna referente à letalidade da doença.
+
+    Args:
+        df (pd.DataFrame): DataFrame agrupado por ano contendo informações de óbitos e infectados.
+
+    Returns:
+        pd.DataFrame: Um novo DataFrame com uma relação de letalidade por ano.
+    """
+    try:
+        df['LETALIDADE'] = df['OBITO'] / df['INFECTADOS'] # Adição da coluna letalidade
+        df = df.drop(columns=['INFECTADOS', 'OBITO']) # Exclusão das colunas irrelavantes para a análise
+        return df
+    except KeyError as e:
+        # Trata exceção se as colunas necessárias não estiverem presentes no DataFrame
+        print(f"Erro ao organizar DataFrame: {e}")
+        return None
