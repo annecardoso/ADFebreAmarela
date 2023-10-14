@@ -1,18 +1,21 @@
-import Analise_2.utils as utils
+import Analise_2.tratamento_dados as td
 import Analise_2.vizualizacao as viz
-import matplotlib.pyplot as plt
 
 # Carregamento das bases de dados
-df, states = utils.carregar_dataframes()
+df = td.carregar_dataframes()
 
-# PERGUNTA 1-a): óbtios por estado
-gdf_obitos_uf = utils.obitos_por_uf(df, states)
+# Mannipula o dataframe mantendo as informações pertinentes à questão
+df_datas = td.organizar_df_datas(df)
 
-plt.figure(1)
-grafico_1_a = viz.plot_mapa_uf(gdf_obitos_uf)
-viz.definir_rotulos('Óbitos por Unidade Federativa',
-                    '','')  # É definido o título do gráfico
-grafico_1_a.set_axis_off()  # Os eixos do gráfico são removidos
+# PERGUNTA 2-a): Qual a relação entre os anos e a quantidade de infecções e ou mortes?
+ocorrencias_por_ano = td.organizar_df_ano(df_datas)
+viz.plotar_ocorrencias_ano(ocorrencias_por_ano)
 
+# PERGUNTA 2-b) No geral, há algum mês do ano com mais infecções?
+df_meses = td.organizar_df_mes(df_datas)
+viz.plotar_mortes_por_mes(df_meses)
 
-plt.show() # Plota todas as figuras preestabelecidas
+# PERGUNTA 2-c) Há alguma relação entre a letalidade da doença e o passar do tempo?
+df_letalidade = td.organizar_df_letalidade(ocorrencias_por_ano)
+viz.plotar_letalidade(df_letalidade)
+print(df_letalidade)
