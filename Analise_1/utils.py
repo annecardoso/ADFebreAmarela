@@ -11,6 +11,12 @@ def carregar_dataframes():
     -------
     Tuple
         Um par de DataFrames contendo dados de óbitos e informações geoespaciais dos estados.
+        
+    >>> df, states = carregar_dataframes()
+    >>> isinstance(df, pd.DataFrame)
+    True
+    >>> isinstance(states, gpd.GeoDataFrame)
+    True
     """
     
     try:
@@ -49,6 +55,11 @@ def obitos_por_uf(df, states):
     -------
     GeoDataFrame
         Um GeoDataFrame que combina os dados de óbitos e informações geoespaciais.
+        
+    >>> df, states = carregar_dataframes()
+    >>> gdf_obitos_uf = obitos_por_uf(df, states)
+    >>> isinstance(gdf_obitos_uf, gpd.GeoDataFrame)
+    True
     """
     
     if df is None or states is None:
