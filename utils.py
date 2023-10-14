@@ -1,7 +1,5 @@
 import pandas as pd
 import geopandas as gpd
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 def carregar_dataframes():
     """
@@ -12,7 +10,6 @@ def carregar_dataframes():
     Tuple
         Um par de DataFrames contendo dados de óbitos e informações geoespaciais dos estados.
     """
-    
     try:
         # Tenta carregar um DataFrame a partir de um arquivo CSV
         df = pd.read_csv('Dados/fa_casoshumanos_1994-2021.csv', sep=';', encoding='ISO-8859-1')
@@ -21,16 +18,16 @@ def carregar_dataframes():
         # Trata exceção se o arquivo CSV não for encontrado
         print(f"Erro ao carregar o arquivo CSV: {e}")
         df = None
-        
+
     try:
         # Tenta carregar um GeoDataFrame a partir de um arquivo GeoJSON    
         states = gpd.read_file('Dados/br_states.json')
-        
+
     except FileNotFoundError as e:
         # Trata exceção se o arquivo GeoJSON não for encontrado
         print(f"Erro ao carregar o arquivo GeoJSON: {e}")
         states = None
-    
+
     return df, states
 
 
@@ -77,36 +74,4 @@ def obitos_por_uf(df, states):
         # Trata exceção se ocorrer um erro inesperado durante a análise de dados
         print(f"Erro durante a análise de dados: {e}")
         return None
-
-
-def plot_obitos_uf(gdf_obitos_uf):
-    """
-    Gera um mapa de calor de óbitos por unidade federativa.
-
-    Parameters
-    ----------
-    gdf_obitos_uf : GeoDataFrame
-        GeoDataFrame contendo dados de óbitos por unidade federativa.
-    """
-    
-    if gdf_obitos_uf is None:
-        # Verifica se o GeoDataFrame foi gerado corretamente
-        print("O GeoDataFrame não foi gerado corretamente. Não é possível gerar o mapa.")
-        return
-
-    try:
-        # Plota um mapa de calor com base nos dados de óbitos
-        plot_ax = gdf_obitos_uf.plot(column = 'OBITO', legend=True, cmap='Reds') # Um gráfico geoespacial é criado usando a coluna ’OBITO’ do DataFrame 
-        plot_ax.set_title('Óbitos por Unidade Federativa') # É definido o título do mapa
-        plot_ax.set_axis_off() # Os eixos do gráfico são removidos
-        plt.show()
-    
-    except Exception as e:
-        # Trata exceção se ocorrer um erro inesperado durante a geração do mapa
-        print(f"Erro durante a geração do mapa: {e}")
-
-
-if __name__ == '__main__':
-    df, states = carregar_dataframes()
-    gdf_obitos_uf = obitos_por_uf(df, states)
-    plot_obitos_uf(gdf_obitos_uf)
+      
