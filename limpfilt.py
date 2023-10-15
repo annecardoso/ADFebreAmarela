@@ -10,16 +10,16 @@ df.set_index('ID', inplace = True)
 
 def nan_cleaner(df):
     """
-    Cria um df apenas com as linhas que possuem valores NaN 
-    e modifica o df original, retirando-as.
+    Cria um dataframe apenas com as linhas que possuem valores NaN 
+    e modifica o dataframe original, retirando-as.
 
     Parâmetros
     ----------
-    df : df
+    df : pd.DataFrame
     Retorno
     -------
-    df 
-        df destacado com linhas NaN.
+    pd.DataFrame
+        Dataframe destacado com linhas NaN.
     Exemplos
     --------
     >>> df1 = pd.df(np.array([[1, 2, 3], [4, pd.NA, 6], [7, 8, 9]]),
@@ -34,7 +34,6 @@ def nan_cleaner(df):
     df.dropna(inplace = True)
     return na_df
 
-nan_cleaner(df)
 
 def rem_dupli(df):
     """
@@ -42,11 +41,11 @@ def rem_dupli(df):
 
     Parâmetros
     ----------
-    df : df
+    df : pd.DataFrame
     Retorno
     -------
-    df 
-        df atualizado.
+    pd.DataFrame 
+        Dataframe atualizado.
     Exemplos
     --------
     >>> df2 = pd.df(np.array([[1, 2, 3], [4, 5, 6], [4, 5, 6], [7, 8, 9], [1, 2, 3]]),
@@ -82,16 +81,16 @@ def ftr_dt_is(data_str):
 def rem_inv_dtis(df):  #TODO: CRIAR CSV COM df DE ASSINT/DECIDIR OQ FAZER
     """
     Retira linhas com valores inválidos de DT_IS.
-    Guarda casos assintomáticos em um novo df.
+    Guarda casos assintomáticos em um novo dataframe.
 
     Parâmetros
     ----------
-    df : df
+    df : pd.DataFrame
 
     Retorno
     -------
-    df
-        df de assintomáticos.
+    pd.DataFrame
+        Dataframe de assintomáticos.
 
     Exemplos
     --------
@@ -133,20 +132,20 @@ def is_integer(value):
 
 def ftr_idades(df):   ############DOCTEST
     """
-    Recebe o df e trata a coluna de idades.
+    Recebe o dataframe e trata a coluna de idades.
     Valores não inteiros são tornados válidos e linhas com idades 0 
-    e maiores que 130 são retiradas do df principal e separados
-    em um df de erro.
+    e maiores que 130 são retiradas do dataframe principal e separados
+    em um dataframe de erro.
 
 
     Parâmetros
     ----------
-    df : df
+    df : pd.DataFrame
 
     Retorno
     -------
-    df
-        df com as linhas contendo idades descartadas.
+    pd.DataFrame
+        Dataframe com as linhas contendo idades descartadas.
     """
     df_erridade = df.loc[df['IDADE'].apply(lambda x: not is_integer(x))]
     df_erridade.loc[:,'IDADE'] = df_erridade['IDADE'].astype(str)
@@ -173,12 +172,12 @@ def ftr_idades(df):   ############DOCTEST
 
 def adicionar_coluna(df, nome_coluna, arr_valores):
     """
-    Adiciona uma nova coluna ao df cujos valores são fornecidos pela array.
+    Adiciona uma nova coluna ao dataframe cujos valores são fornecidos pela array.
 
     Parâmetros
     ----------
-    df : pd.df
-        O df ao qual a nova coluna será adicionada.
+    df : pd.DataFrame
+        O dataframe ao qual a nova coluna será adicionada.
     nome_coluna : str
         O nome da nova coluna.
     arr_valores : dict, np.array, pd.Series
@@ -186,14 +185,14 @@ def adicionar_coluna(df, nome_coluna, arr_valores):
 
     Retorno
     -------
-    pd.df
-        O df original com a nova coluna adicionada, ou None em caso de exceção.
+    pd.DataFrame
+        O dataframe original com a nova coluna adicionada, ou None em caso de exceção.
 
     Exemplos
     --------
     >>> dic1 = {'a': [1, 2, 3],
     ...         'b': [4, 5, 6]}
-    >>> df = pd.df(dic1)
+    >>> df = pd.DataFrame(dic1)
     
     >>> val1 = [10, 20, 30]
     >>> df = adicionar_coluna(df, 'c', val1)
@@ -222,12 +221,12 @@ def adicionar_coluna(df, nome_coluna, arr_valores):
 
 def operacao_colunas(df, colunas, nova_coluna, operacao, custom_func=None):
     """
-    Realiza uma operação entre colunas do df e cria uma nova coluna com o resultado.
+    Realiza uma operação entre colunas do dataframe e cria uma nova coluna com o resultado.
 
     Parâmetros
     ----------
-    df : pd.df
-        df que contém as colunas originais.
+    df : pd.DataFrame
+        Dataframe que contém as colunas originais.
     colunas : dict, np.array, pd.Series, list
         Lista com as colunas a serem usadas na operação. Pode ser um dicionário, u
         ma array NumPy, uma série Pandas ou uma lista de nomes de colunas.
@@ -240,15 +239,15 @@ def operacao_colunas(df, colunas, nova_coluna, operacao, custom_func=None):
 
     Retorno
     -------
-    pd.df
-        O df original com a nova coluna .
+    pd.DataFrame
+        O dataframe original com a nova coluna .
 
     Exemplo
     -------
     >>> dic2 = {'c1': [1, 2, 3],
     ...         'c2': [4, 5, 6],
     ...         'c3': [7, 8, 9]}
-    >>> df2 = pd.df(dic2)
+    >>> df2 = pd.DataFrame(dic2)
     
     >>> # Realiza a adição das colunas 
     >>> df2 = operacao_colunas(df2, ['c1', 'c2', 'c3'], 'Soma', '+')
