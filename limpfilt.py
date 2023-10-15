@@ -34,6 +34,8 @@ def nan_cleaner(df):
     df.dropna(inplace = True)
     return na_df
 
+nan_cleaner(df)
+
 def rem_dupli(df):
     """
     Remove linhas duplicadas.
@@ -80,10 +82,16 @@ def ftr_dt_is(data_str):
 def rem_inv_dtis(df):  #TODO: CRIAR CSV COM DATAFRAME DE ASSINT/DECIDIR OQ FAZER
     """
     Retira linhas com valores inválidos de DT_IS.
+    Guarda casos assintomáticos em um novo dataframe.
 
     Parâmetros
     ----------
     df : DataFrame
+
+    Retorno
+    -------
+    DataFrame
+        DataFrame de assintomáticos.
 
     Exemplos
     --------
@@ -97,12 +105,12 @@ def rem_inv_dtis(df):  #TODO: CRIAR CSV COM DATAFRAME DE ASSINT/DECIDIR OQ FAZER
     4  1  Assintomático  3
 
     """
+    df_assint = df.query('DT_IS == "Assintomático"')
     inval_dtis = df[df['DT_IS'].apply(ftr_dt_is)]
     df_errassint = inval_dtis.query('DT_IS != "Assintomático"')  #Dataframe com apenas linhas erradas de dt_is
     df.drop(df_errassint.index, inplace = True)
-    
-
-#df_assint = df.query('DT_IS == "Assintomático"')    
+    return df_assint
+       
 
 def is_integer(value):
     """
@@ -110,7 +118,7 @@ def is_integer(value):
 
     Parâmetros
     ----------
-    value : object
+    value : str
 
     Retorno
     -------
@@ -123,6 +131,35 @@ def is_integer(value):
     except ValueError:
         return False
 
+def ftr_idades(df):  
+    """
+    Recebe o dataframe e trata a coluna de idades.
+    Valores não inteiros são tornados válidos e linhas com idades 0 
+    e maiores que 130 são retiradas do dataframe principal e separados
+    em um dataframe de erro.
 
 
+    Parâmetros
+    ----------
+    df : DataFrame
 
+    Retorno
+    -------
+    Dataframe
+        Dataframe com as linhas contendo idades descartadas.
+    """
+    df_erridade = df.loc[df['IDADE'].apply(lambda x: not is_integer(x))]
+    df_erridade.loc[:,'IDADE'] = df_erridade['IDADE'].astype(str)
+    df_erridade.loc[:,'IDADE'] = df_erridade['IDADE'].str.split(',').str[0]
+
+    df.loc[df_erridade.index] = df_erridade.values
+
+    df_erridd = df[(df['IDADE'].astype(int) < 1) | (df['IDADE'].astype(int) > 130)]
+    
+    df.drop(df_erridd.index, inplace = True)
+
+    return df_erridd
+
+
+    
+    
