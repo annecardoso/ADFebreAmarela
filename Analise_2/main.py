@@ -1,7 +1,9 @@
+import pandas as pd
+
 import Analise_2.tratamento_dados as td
 import Analise_2.vizualizacao as viz
 
-# Carregamento das bases de dados
+# Carregamento da bases de dados sobre febre amarela
 df = td.carregar_dataframes()
 
 # Mannipula o dataframe mantendo as informações pertinentes à questão

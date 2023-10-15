@@ -1,12 +1,18 @@
 import pandas as pd
 from pathlib import Path
 
-def carregar_DataFrames() -> pd.DataFrame:
+def carregar_dataframes() -> pd.DataFrame:
     """
     Carrega um DataFrame a partir de um arquivo CSV.
 
-    Returns:
-        pd.DataFrame: O DataFrame carregado com os dados ou None se houver um erro.
+    Parâmetros
+    ----------
+    None
+
+    Retorno
+    -------
+    pd.DataFrame
+        O DataFrame carregado com os dados ou None se houver um erro.
     """
     try:
         # Obtém o caminho para o arquivo com os dados da Febre Amarela
@@ -25,11 +31,15 @@ def organizar_df_datas(df: pd.DataFrame) -> pd.DataFrame:
     """
     Faz um tratamento no DataFrame para que tenha apenas as informações de datas, óbitos e infecções.
 
-    Args:
-        df (pd.DataFrame): DataFrame contendo as informações de datas e óbitos.
+    Parâmetros
+    ----------
+    df : pd.DataFrame
+        DataFrame contendo as informações de datas e óbitos.
 
-    Returns:
-        pd.DataFrame: Um novo DataFrame com as datas no formato desejado e a contagem de óbitos e infectados.
+    Retorno
+    -------
+    pd.DataFrame
+        Um novo DataFrame com as datas no formato desejado e a contagem de óbitos e infectados.
     """
     try:
         # Converte a coluna 'OBITO' em valores binários (0 ou 1)
@@ -48,11 +58,15 @@ def organizar_df_ano(df: pd.DataFrame) -> pd.DataFrame:
     """
     Organiza um DataFrame relacionando à cada ano uma quantidade de casos e mortes por febre amarela.
 
-    Args:
-        df (pd.DataFrame): DataFrame contendo informações de datas, infecções e mortes.
+    Parâmetros
+    ----------
+    df : pd.DataFrame
+        DataFrame contendo informações de datas, infecções e mortes.
 
-    Returns:
-        pd.DataFrame: Um novo DataFrame com o número de infectados e mortos por ano.
+    Retorno
+    -------
+    pd.DataFrame
+        Um novo DataFrame com o número de infectados e mortos por ano.
     """
     try:
         df = df.drop(columns=['MES_IS'])
@@ -69,15 +83,19 @@ def organizar_df_mes(df: pd.DataFrame) -> pd.DataFrame:
     Organiza o DataFrame para facilitar uma análise específica. No caso, os dados são reduzidos
     ao total de infeções e óbitos em relação aos meses do ano.
 
-    Args:
-        df (pd.DataFrame): DataFrame contendo informações de datas, infecções e óbitos.
+    Parâmetros
+    ----------
+    df : pd.DataFrame
+        DataFrame contendo informações de datas, infecções e óbitos.
 
-    Returns:
-        pd.DataFrame: Um novo DataFrame com a contagem de óbitos e infecções em cada mês.
+    Retorno
+    -------
+    pd.DataFrame
+        Um novo DataFrame com a contagem de óbitos e infecções em cada mês.
     """
     try:
         df = df.drop(columns=['ANO_IS'])
-        df = df.groupby(['MES_IS']).sum() # Agrupamento por meses e cálculo do total de mortos e infectados
+        df = df.groupby(['MES_IS']).sum()
         df = df.reset_index()
 
         # Dicionário que relaciona o número dos meses aos seus nomes
@@ -97,15 +115,19 @@ def organizar_df_letalidade(df: pd.DataFrame) -> pd.DataFrame:
     Organiza o DataFrame para facilitar uma análise específica. Para isso,
     há a exclusão de colunas e adição de uma coluna referente à letalidade da doença.
 
-    Args:
-        df (pd.DataFrame): DataFrame agrupado por ano contendo informações de óbitos e infectados.
+    Parâmetros
+    ----------
+    df : pd.DataFrame
+        DataFrame agrupado por ano contendo informações de óbitos e infectados.
 
-    Returns:
-        pd.DataFrame: Um novo DataFrame com uma relação de letalidade por ano.
+    Retorno
+    -------
+    pd.DataFrame
+        Um novo DataFrame com uma relação de letalidade por ano.
     """
     try:
         df['LETALIDADE'] = df['OBITO'] / df['INFECTADOS'] # Adição da coluna letalidade
-        df = df.drop(columns=['INFECTADOS', 'OBITO']) # Exclusão das colunas irrelavantes para a análise
+        df = df.drop(columns=['INFECTADOS', 'OBITO']) # Exclusão das colunas irrelevantes para a análise
         return df
     except KeyError as e:
         # Trata exceção se as colunas necessárias não estiverem presentes no DataFrame
