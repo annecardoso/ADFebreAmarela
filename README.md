@@ -21,6 +21,11 @@ O repositório contém os seguintes elementos:
 
 ## Equipe
 
-- **Anne Beatriz Cardoso de Sousa**: Responsável pel 
-- **Beatriz Miranda Bezerra**: Encarregada d
-- **Gustavo Murilo Cavalcante Carvalho**: Encarregado d
+- **Anne Beatriz Cardoso de Sousa**: Responsável pela filtragem e análise da 
+- **Beatriz Miranda Bezerra**: Encarregada da análise da distribuição por unidade federativa de infecções e óbitos.
+- **Gustavo Murilo Cavalcante Carvalho**: Encarregado da análise da distribuição mensal, anual e variação da letalidade ao longo dos anos.
+  
+## Resultados e visualização
+
+![Infecções por Unidade Federativa](./img/infec_uf.png)
+
