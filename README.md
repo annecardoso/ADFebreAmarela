@@ -5,7 +5,7 @@
 Bem-vindo ao nosso repositório da Avaliação A1 da disciplina de Linguagens de Programação! Este repositório contém o código-fonte e análise de dados relacionados à ocorrência de febre amarela no Brasil. Nossa equipe é composta por Anne, Beatriz e Murilo.
 ## Objetivo
 
-O objetivo principal deste projeto é analisar os dados relacionados à febre amarela no Brasil, fornecendo insights valiosos sobre sua incidência, distribuição geográfica e tendências ao longo do tempo. Nosso projeto envolve a coleta, limpeza e visualização de dados para uma melhor compreensão da situação da febre amarela no país.
+O objetivo principal deste projeto é analisar os dados relacionados à febre amarela no Brasil. Nosso projeto envolve a coleta, limpeza e visualização de dados para uma melhor compreensão da situação da febre amarela no país.
 
 ## Conteúdo
 
@@ -17,11 +17,11 @@ O repositório contém os seguintes elementos:
 
 3. **Documentação**: Sphinx
 
-4. **Resultados e Visualizações**: Apresentamos visualizações gráficas atraentes e resultados de análises de dados para fornecer uma visão completa da febre amarela no Brasil.
+4. **Resultados e Visualizações**: Apresentamos visualizações gráficas e resultados de análises de dados.
 
 ## Equipe
 
-- **Anne Beatriz Cardoso de Sousa**: Responsável pela filtragem e análise da 
+- **Anne Beatriz Cardoso de Sousa**: Responsável pela filtragem e análise das ocorrências de mortes totais, por gênero e idade dos pacientes.
 - **Beatriz Miranda Bezerra**: Encarregada da análise da distribuição por unidade federativa de infecções e óbitos.
 - **Gustavo Murilo Cavalcante Carvalho**: Encarregado da análise da distribuição mensal, anual e variação da letalidade ao longo dos anos.
   
