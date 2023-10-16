@@ -43,15 +43,14 @@ O repositório contém os seguintes elementos:
 
 ![Óbitos (relativo) por Unidade Federativa](./img/obitos_rel_uf.png)
 
-5. Nesta plotagem vemos a doença esteve sobre controle na maior parte do tempo, mas não completamente, pois na metade da última década houve um pico de infecções e mortes, correspondente à epidemia de febre amarela que ocorreu entre 2017 e 2019.
+5. Nesta plotagem vemos que a doença esteve sobre controle na maior parte do tempo, mas não completamente, pois na metade da última década houve um pico de infecções e mortes, correspondente à epidemia de febre amarela que ocorreu entre 2017 e 2019.
 
 ![Ocorrências de Infectados e óbitos por ano](./img/infec_e_obitos_ano.png)
 
-6. O clima quente é favorável à reprodução dos mosquitos, os vetores da doença. Assim, a relação presente no gráfico faz muito sentido, pois é os meses com maior número de infeções, fazem parte do verão, o período mais quente do ano. 
+6. O clima quente é favorável à reprodução dos mosquitos, os vetores da doença. Assim, a relação presente no gráfico faz muito sentido, pois os meses com maior número de infeções, fazem parte do verão, o período mais quente do ano. 
 
 ![Ocorrências de Infectados e óbitos por mês](./img/infec_e_obitos_mes.png)
 
-7. A variação da letalidade da doença ao longo dos anos não possui nenhuma tendência. Ainda assim, podemos ver que os anos com muitos infectados, ou seja, nos quais há uma amostra significativa, os pontos estão na mesma faixa. Tomando esse ponto como norma, temos que a letalidade está por volta de 35%
+7. A variação da letalidade da doença ao longo dos anos não possui nenhuma tendência. Ainda assim, podemos ver que os anos com muitas infeções (2017 e 2018), nos quais há uma amostra significativa, os pontos estão na mesma faixa. Tomando esses pontos como norma, temos que a letalidade da febre amarela é de cerca de 35%.
 
 ![Variação da letalidade da febre amarela](./img/variacao_letalidade.png)
-etalidade da febre amarela](./img/variacao_letalidade.png)

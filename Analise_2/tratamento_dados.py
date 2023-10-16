@@ -6,7 +6,7 @@ def carregar_dataframes() -> pd.DataFrame:
     """
     Carrega um DataFrame a partir de um arquivo CSV.
 
-    Returns
+    Retorno
     -------
     pd.DataFrame
         O DataFrame carregado com os dados ou None se houver um erro.
@@ -29,12 +29,12 @@ def limpar_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
     Realiza uma série de operações para limpar o DataFrame.
 
-    Parameters
+    Parâmetros
     ----------
     df : pd.DataFrame
         O DataFrame a ser limpo.
 
-    Returns
+    Retorno
     -------
     pd.DataFrame
         O DataFrame limpo após as operações.
@@ -83,12 +83,12 @@ def organizar_df_ano(df: pd.DataFrame) -> pd.DataFrame:
     """
     Organiza um DataFrame relacionando a cada ano uma quantidade de casos e mortes por febre amarela.
 
-    Parameters
+    Parâmetros
     ----------
     df : pd.DataFrame
         DataFrame contendo informações de datas, infecções e mortes.
 
-    Returns
+    Retorno
     -------
     pd.DataFrame
         Um novo DataFrame com o número de infectados e mortos por ano.
@@ -108,12 +108,12 @@ def organizar_df_mes(df: pd.DataFrame) -> pd.DataFrame:
     """
     Organiza o DataFrame para facilitar uma análise específica, reduzindo os dados ao total de infecções e óbitos em relação aos meses do ano.
 
-    Parameters
+    Parâmetros
     ----------
     df : pd.DataFrame
         DataFrame contendo informações de datas, infecções e óbitos.
 
-    Returns
+    Retorno
     -------
     pd.DataFrame
         Um novo DataFrame com a contagem de óbitos e infecções em cada mês.
@@ -141,12 +141,12 @@ def organizar_df_letalidade(df: pd.DataFrame) -> pd.DataFrame:
     Organiza o DataFrame para facilitar uma análise específica. Para isso,
     há a exclusão de colunas e adição de uma coluna referente à letalidade da doença.
 
-    Parameters
+    Parâmetros
     ----------
     df : pd.DataFrame
         DataFrame agrupado por ano contendo informações de óbitos e infectados.
 
-    Returns
+    Retorno
     -------
     pd.DataFrame
         Um novo DataFrame com uma relação de letalidade por ano.
