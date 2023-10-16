@@ -156,7 +156,6 @@ def organizar_df_letalidade(df: pd.DataFrame) -> pd.DataFrame:
         df['LETALIDADE'] = df['OBITO'] / df['INFECTADOS']
         # Exclusão das colunas desnecessárias
         df = lf.remover_coluna(df, 'OBITO')
-        df = lf.remover_coluna(df, 'INFECTADOS')
         return df
     except KeyError as e:
         # Trata exceção se as colunas necessárias não estiverem presentes no DataFrame
