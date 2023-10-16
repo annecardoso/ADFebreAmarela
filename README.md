@@ -29,6 +29,8 @@ O repositório contém os seguintes elementos:
 - **Beatriz Miranda Bezerra**: Encarregada da análise da distribuição por unidade federativa de infecções e óbitos.
 - **Gustavo Murilo Cavalcante Carvalho**: Encarregado da análise da distribuição mensal, anual e variação da letalidade ao longo dos anos.
   
+![Integrantes da equipe](./img/equipe.jpeg)
+
 ## Resultados e visualização
 
 1. Neste gráfico é possível observar a maior ocorrência de febre amarela nos estados que compõem a região sudeste. Porém, uma das causas relacionadas a isso pode ser a quantidade populacional que é maior nesses estados.
@@ -58,3 +60,15 @@ O repositório contém os seguintes elementos:
 7. A variação da letalidade da doença ao longo dos anos não possui nenhuma tendência. Ainda assim, podemos ver que os anos com muitas infeções (2017 e 2018), nos quais há uma amostra significativa, os pontos estão na mesma faixa. Tomando esses pontos como norma, temos que a letalidade da febre amarela é de cerca de 35%.
 
 ![Variação da letalidade da febre amarela](./img/variacao_letalidade.png)
+
+8. No gráfico abaixo temos um gráfico de barras que exibe a contagem óbitos.
+   
+![Contagem de mortes](./img/obitos_contagem.png)
+
+9. Neste gráfico apresentamos o total de mortes por ano.
+
+![Total de mortes por ano](./img/obitos_ano.png)
+
+10. Abaixo, um gráfico comparativo da distribuição de óbitos por gênero.
+
+![Mortes por gênero ao longo do tempo](./img/obitos_genero_ano.png)
