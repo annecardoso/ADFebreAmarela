@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
 
 def plotar_ocorrencias_ano(df: pd.DataFrame) -> None:
     """
@@ -27,19 +26,20 @@ def plotar_ocorrencias_ano(df: pd.DataFrame) -> None:
 
     try:
         # Criação de um gráfico de linha com duas séries de valores
-        plt.plot(anos,infectados,label='Infectados', color='#471164') # Linha dos infectados
-        plt.plot(anos,obitos,label='Óbitos', color='#fb9d07') # Linha dos óbitos
+        plt.plot(anos, infectados, label='Infectados', color='#471164')  # Linha dos infectados
+        plt.plot(anos, obitos, label='Óbitos', color='#fb9d07')  # Linha dos óbitos
 
         # Configuração da plotagem (legendas, títulos, etc)
         plt.title('Ocorrências de Infectados e Óbitos por Ano')
         plt.xlabel('Ano')
         plt.ylabel('Ocorrências')
-        plt.legend()
-        plt.grid(True) # Habilita a grade no gráfico
+        plt.legend()  # Habilita a legenda
+        plt.grid(True)  # Habilita a grade no gráfico
         plt.show()
         return None
     except Exception as e:
         print(f'Erro ao plotar o gráfico: {e}')
+
 
 def plotar_mortes_por_mes(df: pd.DataFrame) -> None:
     """
@@ -73,7 +73,7 @@ def plotar_mortes_por_mes(df: pd.DataFrame) -> None:
         plt.title('Total de óbitos e infecções por mês')
         plt.xlabel('Mês')
         plt.ylabel('Ocorrências')
-        plt.legend()
+        plt.legend()  # Habilita a legenda
         plt.grid(True)  # Ativa a grade no gráfico
         plt.xticks(rotation=30)  # Rotaciona os rótulos do eixo x em 30 graus
         plt.subplots_adjust(top=0.9, bottom=0.18, left=0.13, right=0.90)  # Ajuste das margens
@@ -110,7 +110,7 @@ def plotar_letalidade(df: pd.DataFrame) -> None:
         # Dimensões do gráfico
         plt.figure(figsize=[8, 5])
         # Cria gráfico de dispersão com cores
-        plt.scatter(anos, letalidade, c=infectados, cmap='viridis', s=100, zorder=2)
+        plt.scatter(anos, letalidade, c=infectados, cmap='viridis', s=80, zorder=2)
         plt.plot(anos, letalidade, zorder=1)  # Cria uma linha de tendência
         plt.colorbar(label='Infectados')  # Cria uma barra de cores (legenda)
 

@@ -1,6 +1,5 @@
 import pandas as pd
 import limpfilt as lf
-from pathlib import Path
 
 def organizar_df_datas(df: pd.DataFrame) -> pd.DataFrame:
     """
