@@ -12,9 +12,7 @@ def carregar_geodataframe() -> gpd.GeoDataFrame:
     GeoDataFrame
         Um GeoDataFrame contendo informações geoespaciais dos estados.
         
-    >>> states = carregar_dataframes()
-    >>> isinstance(pd.DataFrame)
-    True
+    >>> states = carregar_geodataframe()
     >>> isinstance(states, gpd.GeoDataFrame)
     True
     """
