@@ -11,22 +11,22 @@ Welcome to ADFebreAmarela's documentation!
    :show-inheritance:
 
 .. automodule:: utils
-   :members:
+   :members: carregar_geodataframe, filtragem_populacao, obitos_por_uf, obitos_rel_por_uf, infec_por_uf, infec_rel_por_uf, plot_obitos_uf, plot_obitos_rel_uf, plot_infec_uf, plot_infec_rel_uf
    :undoc-members:
    :show-inheritance:
 
 .. automodule:: test_utils
-   :members:
+   :members: test_carregar_dataframes, test_obitos_por_uf
    :undoc-members:
    :show-inheritance:
 
 .. automodule:: tratamento_dados
-   :members:
+   :members: organizar_df_datas, organizar_df_ano,  organizar_df_mes,  organizar_df_letalidade
    :undoc-members:
    :show-inheritance:
 
 .. automodule:: visualizacao
-   :members:
+   :members: plotar_ocorrencias_ano, plotar_mortes_por_mes, plotar_letalidade
    :undoc-members:
    :show-inheritance:
 

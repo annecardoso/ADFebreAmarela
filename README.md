@@ -7,6 +7,10 @@ Bem-vindo ao nosso repositório da Avaliação A1 da disciplina de Linguagens de
 
 O objetivo principal deste projeto é analisar os dados relacionados à febre amarela no Brasil. Nosso projeto envolve a coleta, limpeza e visualização de dados para uma melhor compreensão da situação da febre amarela no país.
 
+## Documentação
+A documentaão pode ser acessada pelo link abaixo:
+- [Documentação](/docs/build/html/index.html)
+
 ## Conteúdo
 
 O repositório contém os seguintes elementos:
