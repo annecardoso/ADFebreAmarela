@@ -1,10 +1,11 @@
-import pandas as pd
-
-import Analise_2.tratamento_dados as td
-import Analise_2.visualizacao as vis
+import tratamento_dados as td
+import visualizacao as vis
 
 # Carregamento da bases de dados sobre febre amarela
 df = td.carregar_dataframes()
+
+# Limpeza do dataframe
+df = td.limpar_dataframe(df)
 
 # Mannipula o dataframe mantendo as informações pertinentes à questão
 df_datas = td.organizar_df_datas(df)

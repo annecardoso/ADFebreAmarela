@@ -115,4 +115,13 @@ def plotar_letalidade(df:pd.DataFrame) -> None:
     plt.grid(True)
     plt.show()
 
+    # plt.figure(figsize=(10, 6))
+    # plt.scatter(obitos, letalidade, c=anos, cmap='viridis', s=100)
+    # plt.colorbar(label='Ano')
+    # plt.title("Relação entre Letalidade e Óbitos por Ano")
+    # plt.xlabel("Óbitos")
+    # plt.ylabel("Letalidade")
+    #
+    # plt.show()
+
     return None
