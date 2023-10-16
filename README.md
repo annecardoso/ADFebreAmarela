@@ -43,14 +43,15 @@ O repositório contém os seguintes elementos:
 
 ![Óbitos (relativo) por Unidade Federativa](./img/obitos_rel_uf.png)
 
-5. Deste gráfico é possível concluir que houve um surto de febre amarela no Brasil por volta de 2017. De fato, obtemos essa confirmação ao pesquisar sobre o assunto: https://pt.wikipedia.org/wiki/Surto_de_febre_amarela_no_Brasil_em_2016-2017
+5. Nesta plotagem vemos a doença esteve sobre controle na maior parte do tempo, mas não completamente, pois na metade da última década houve um pico de infecções e mortes, correspondente à epidemia de febre amarela que ocorreu entre 2017 e 2019.
 
 ![Ocorrências de Infectados e óbitos por ano](./img/infec_e_obitos_ano.png)
 
-6. Deste gráfico podemos extrair que há maiores notificações nos meses em que o verão acontece no Brasil.
+6. O clima quente é favorável à reprodução dos mosquitos, os vetores da doença. Assim, a relação presente no gráfico faz muito sentido, pois é os meses com maior número de infeções, fazem parte do verão, o período mais quente do ano. 
 
 ![Ocorrências de Infectados e óbitos por mês](./img/infec_e_obitos_mes.png)
 
-7. Deste gráfico é possível supor que a letalidade da doença esteja entre 0 e 1%. Além disso, nos últimos anos a taxa esteve por volta de 0.5%, talvez haja influência do aumento da taxa de vacinação.
+7. A variação da letalidade da doença ao longo dos anos não possui nenhuma tendência. Ainda assim, podemos ver que os anos com muitos infectados, ou seja, nos quais há uma amostra significativa, os pontos estão na mesma faixa. Tomando esse ponto como norma, temos que a letalidade está por volta de 35%
 
 ![Variação da letalidade da febre amarela](./img/variacao_letalidade.png)
+etalidade da febre amarela](./img/variacao_letalidade.png)

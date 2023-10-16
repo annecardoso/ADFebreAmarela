@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import matplotlib.colors as mcolors
 
 def definir_rotulos(titulo, eixo_x, eixo_y):
     """
@@ -25,6 +26,7 @@ def definir_rotulos(titulo, eixo_x, eixo_y):
     plt.ylabel(eixo_y)
     return None
 
+
 def plotar_ocorrencias_ano(df:pd.DataFrame) -> None:
     """
     Plota ocorrências de infectados e óbitos por ano.
@@ -39,13 +41,13 @@ def plotar_ocorrencias_ano(df:pd.DataFrame) -> None:
     None
     """
     # Criação de arrays com as séries de valores
-    anos = df.iloc[:,0].values
-    infectados = df.iloc[:,1].values
-    obitos = df.iloc[:,2].values
+    anos = df['ANO_IS']
+    infectados = df['INFECTADOS']
+    obitos = df['OBITO']
 
     # Plotagem das séries de valores em um gráfico de linhas
-    plt.plot(anos,infectados,label='Infectados')
-    plt.plot(anos,obitos,label='Óbitos')
+    plt.plot(anos,infectados,label='Infectados', color='#471164')
+    plt.plot(anos,obitos,label='Óbitos', color='#fb9d07')
 
     # Configuração da plotagem (legendas, títulos, etc)
     definir_rotulos('Ocorrências de Infectados e Óbitos por Ano',
@@ -56,7 +58,7 @@ def plotar_ocorrencias_ano(df:pd.DataFrame) -> None:
 
     return None
 
-def plotar_mortes_por_mes(df:pd.DataFrame) -> None:
+def plotar_mortes_por_mes(df: pd.DataFrame) -> None:
     """
     Plota o total de óbitos e infecções por mês.
 
@@ -70,24 +72,24 @@ def plotar_mortes_por_mes(df:pd.DataFrame) -> None:
     None
     """
     # Criação de arrays com as séries de valores
-    meses = df.iloc[:, 0].values
-    infectados = df.iloc[:, 1].values
-    obitos = df.iloc[:, 2].values
+    meses = df['MES_IS']
+    infectados = df['INFECTADOS']
+    obitos = df['OBITO']
 
-    # Plotagem das séries de valores em um gráfico de linhas
-    plt.plot(meses, infectados, label='Infectados')
-    plt.plot(meses, obitos, label='Óbitos')
+    # Plotagem das séries de valores em um gráfico de linha #2fb47c
+    plt.plot(meses, infectados, label='Infectados', color='#471164', marker='o')  # Adicionado marcadores para os pontos
+    plt.plot(meses, obitos, label='Óbitos', color='#fb9d07', marker='o')  # Adicionado marcadores para os pontos
 
     # Configuração da plotagem (legendas, títulos, etc)
-    definir_rotulos('Total de óbitos e infecções por mês',
-                    'Mês', 'Ocorrências')
+    plt.title('Total de óbitos e infecções por mês')
+    plt.xlabel('Mês')
+    plt.ylabel('Ocorrências')
     plt.legend()
     plt.grid(True)
-    plt.xticks(rotation=30) # Defina a rotação das etiquetas do eixo x (30 graus)
-    plt.subplots_adjust(top=0.9, bottom=0.18, left=0.13, right=0.90) # Ajuste das margens
+    plt.xticks(rotation=30)  # Defina a rotação das etiquetas do eixo x (30 graus)
+    plt.subplots_adjust(top=0.9, bottom=0.18, left=0.13, right=0.90)  # Ajuste das margens
     plt.show()
 
-    return None
 
 def plotar_letalidade(df:pd.DataFrame) -> None:
     """
@@ -103,25 +105,22 @@ def plotar_letalidade(df:pd.DataFrame) -> None:
     None
     """
     # Criação de arrays com as séries de valores
-    anos = df.iloc[:, 0].values
-    letalidade = df.iloc[:, 1].values
-
-    # Plotagem das séries de valores em um gráfico de linhas
-    plt.plot(anos, letalidade)
+    anos = df['ANO_IS']
+    infectados = df['INFECTADOS']
+    letalidade = df['LETALIDADE']
 
     # Configuração da plotagem (legendas, títulos, etc)
-    definir_rotulos('Variação da letalidade da febre amarela',
-                    'Ano', 'Letalidade')
-    plt.grid(True)
-    plt.show()
 
-    # plt.figure(figsize=(10, 6))
-    # plt.scatter(obitos, letalidade, c=anos, cmap='viridis', s=100)
-    # plt.colorbar(label='Ano')
-    # plt.title("Relação entre Letalidade e Óbitos por Ano")
-    # plt.xlabel("Óbitos")
-    # plt.ylabel("Letalidade")
-    #
-    # plt.show()
+
+
+    plt.figure(figsize=[8,5])
+
+    plt.scatter(anos, letalidade, c=infectados, cmap='viridis', s=100, zorder=2)
+    plt.plot(anos, letalidade, zorder=1)
+    plt.colorbar(label='Infectados')
+    plt.title("Relação entre Letalidade e Infecções por Ano")
+    plt.ylabel("Letalidade")
+    plt.grid(axis='y',linestyle='--')
+    plt.show()
 
     return None
