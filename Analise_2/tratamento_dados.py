@@ -1,31 +1,6 @@
 import pandas as pd
+import limpfilt as lf
 from pathlib import Path
-
-def carregar_dataframes() -> pd.DataFrame:
-    """
-    Carrega um DataFrame a partir de um arquivo CSV.
-
-    Parâmetros
-    ----------
-    None
-
-    Retorno
-    -------
-    pd.DataFrame
-        O DataFrame carregado com os dados ou None se houver um erro.
-    """
-    try:
-        # Obtém o caminho para o arquivo com os dados da Febre Amarela
-        raiz_do_projeto = str(Path(__file__).parent.parent)
-        caminho_arquivo_FA = raiz_do_projeto + '/Dados/fa_casoshumanos_1994-2021.csv'
-
-        # Tenta carregar um DataFrame a partir de um arquivo CSV
-        df = pd.read_csv(caminho_arquivo_FA, sep=';', encoding='ISO-8859-1')
-        return df
-    except FileNotFoundError as e:
-        # Trata exceção se o arquivo CSV não for encontrado
-        print(f"Erro ao carregar o arquivo CSV: {e}")
-        return None
 
 def organizar_df_datas(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -42,8 +17,13 @@ def organizar_df_datas(df: pd.DataFrame) -> pd.DataFrame:
         Um novo DataFrame com as datas no formato desejado e a contagem de óbitos e infectados.
     """
     try:
+        # Para evitar erro, criamos uma cópia do DataFrame recebido
+        #df = df.copy()
+
         # Converte a coluna 'OBITO' em valores binários (0 ou 1)
         df['OBITO'] = df['OBITO'].apply(lambda x: 1 if x == 'SIM' else 0)
+
+
         df_datas = df[['ANO_IS', 'MES_IS', 'OBITO']]
         df_datas.insert(2, 'INFECTADOS', 1, True)  # Adiciona uma coluna para guardar a quantidade de infectados
         df_datas = df_datas.groupby(['ANO_IS', 'MES_IS']).sum()  # Agrupa o DataFrame por ano e mês
@@ -54,9 +34,10 @@ def organizar_df_datas(df: pd.DataFrame) -> pd.DataFrame:
         print(f"Erro ao organizar DataFrame: {e}")
         return None
 
+
 def organizar_df_ano(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Organiza um DataFrame relacionando à cada ano uma quantidade de casos e mortes por febre amarela.
+    Organiza um DataFrame relacionando a cada ano uma quantidade de casos e mortes por febre amarela.
 
     Parâmetros
     ----------
@@ -69,7 +50,7 @@ def organizar_df_ano(df: pd.DataFrame) -> pd.DataFrame:
         Um novo DataFrame com o número de infectados e mortos por ano.
     """
     try:
-        df = df.drop(columns=['MES_IS'])
+        df = lf.remover_coluna(df, 'MES_IS')
         df = df.groupby(['ANO_IS']).sum()
         df = df.reset_index()
         return df
@@ -78,10 +59,10 @@ def organizar_df_ano(df: pd.DataFrame) -> pd.DataFrame:
         print(f"Erro ao organizar DataFrame: {e}")
         return None
 
+
 def organizar_df_mes(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Organiza o DataFrame para facilitar uma análise específica. No caso, os dados são reduzidos
-    ao total de infeções e óbitos em relação aos meses do ano.
+    Organiza o DataFrame para facilitar uma análise específica, reduzindo os dados ao total de infecções e óbitos em relação aos meses do ano.
 
     Parâmetros
     ----------
@@ -94,7 +75,7 @@ def organizar_df_mes(df: pd.DataFrame) -> pd.DataFrame:
         Um novo DataFrame com a contagem de óbitos e infecções em cada mês.
     """
     try:
-        df = df.drop(columns=['ANO_IS'])
+        df = lf.remover_coluna(df, 'ANO_IS')
         df = df.groupby(['MES_IS']).sum()
         df = df.reset_index()
 
@@ -109,6 +90,7 @@ def organizar_df_mes(df: pd.DataFrame) -> pd.DataFrame:
         # Trata exceção se as colunas necessárias não estiverem presentes no DataFrame
         print(f"Erro ao organizar DataFrame: {e}")
         return None
+
 
 def organizar_df_letalidade(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -126,8 +108,10 @@ def organizar_df_letalidade(df: pd.DataFrame) -> pd.DataFrame:
         Um novo DataFrame com uma relação de letalidade por ano.
     """
     try:
-        df['LETALIDADE'] = df['OBITO'] / df['INFECTADOS'] # Adição da coluna letalidade
-        df = df.drop(columns=['INFECTADOS', 'OBITO']) # Exclusão das colunas irrelevantes para a análise
+        # Adição da coluna LETALIDADE
+        df['LETALIDADE'] = df['OBITO'] / df['INFECTADOS']
+        # Exclusão das colunas desnecessárias
+        df = lf.remover_coluna(df, 'OBITO')
         return df
     except KeyError as e:
         # Trata exceção se as colunas necessárias não estiverem presentes no DataFrame

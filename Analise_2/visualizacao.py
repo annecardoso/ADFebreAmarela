@@ -1,31 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def definir_rotulos(titulo, eixo_x, eixo_y):
-    """
-    Define os rótulos do gráfico.
-
-    Parâmetros
-    ----------
-    titulo : str
-        Título do gráfico.
-
-    eixo_x : str
-        Rótulo do eixo x.
-
-    eixo_y : str
-        Rótulo do eixo y.
-
-    Retorno
-    -------
-    None
-    """
-    plt.title(titulo)
-    plt.xlabel(eixo_x)
-    plt.ylabel(eixo_y)
-    return None
-
-def plotar_ocorrencias_ano(df:pd.DataFrame) -> None:
+def plotar_ocorrencias_ano(df: pd.DataFrame) -> None:
     """
     Plota ocorrências de infectados e óbitos por ano.
 
@@ -38,25 +14,31 @@ def plotar_ocorrencias_ano(df:pd.DataFrame) -> None:
     -------
     None
     """
-    # Criação de arrays com as séries de valores
-    anos = df.iloc[:,0].values
-    infectados = df.iloc[:,1].values
-    obitos = df.iloc[:,2].values
+    try:
+        # Tentar acessar as colunas necessárias no DataFrame
+        anos = df['ANO_IS']
+        infectados = df['INFECTADOS']
+        obitos = df['OBITO']
+    except KeyError as e:
+        # Se alguma das colunas estiver ausente, capture a exceção e forneça uma mensagem de erro
+        print(f"Erro: A coluna {e} não está presente no DataFrame.")
+        return
 
-    # Plotagem das séries de valores em um gráfico de linhas
-    plt.plot(anos,infectados,label='Infectados')
-    plt.plot(anos,obitos,label='Óbitos')
+    # Criação de um gráfico de linha com duas séries de valores
+    plt.plot(anos,infectados,label='Infectados', color='#471164') # Linha dos infectados
+    plt.plot(anos,obitos,label='Óbitos', color='#fb9d07') # Linha dos óbitos
 
     # Configuração da plotagem (legendas, títulos, etc)
-    definir_rotulos('Ocorrências de Infectados e Óbitos por Ano',
-                    'Ano','Ocorrências')
+    plt.title('Ocorrências de Infectados e Óbitos por Ano')
+    plt.xlabel('Ano')
+    plt.ylabel('Ocorrências')
     plt.legend()
-    plt.grid(True)
+    plt.grid(True) # Habilita a grade no gráfico
     plt.show()
 
     return None
 
-def plotar_mortes_por_mes(df:pd.DataFrame) -> None:
+def plotar_mortes_por_mes(df: pd.DataFrame) -> None:
     """
     Plota o total de óbitos e infecções por mês.
 
@@ -69,50 +51,65 @@ def plotar_mortes_por_mes(df:pd.DataFrame) -> None:
     -------
     None
     """
-    # Criação de arrays com as séries de valores
-    meses = df.iloc[:, 0].values
-    infectados = df.iloc[:, 1].values
-    obitos = df.iloc[:, 2].values
+    try:
+        # Tentar acessar as colunas necessárias no DataFrame
+        meses = df['MES_IS']
+        infectados = df['INFECTADOS']
+        obitos = df['OBITO']
+    except KeyError as e:
+        # Se alguma das colunas estiver ausente, capture a exceção e forneça uma mensagem de erro
+        print(f"Erro: A coluna {e} não está presente no DataFrame.")
+        return
 
-    # Plotagem das séries de valores em um gráfico de linhas
-    plt.plot(meses, infectados, label='Infectados')
-    plt.plot(meses, obitos, label='Óbitos')
+    # Criação de um gráfico de linha com duas séries de valores
+    plt.plot(meses, infectados, label='Infectados', color='#471164', marker='o')  # Linha dos infectados
+    plt.plot(meses, obitos, label='Óbitos', color='#fb9d07', marker='o')  # Linha dos óbitos
 
     # Configuração da plotagem (legendas, títulos, etc)
-    definir_rotulos('Total de óbitos e infecções por mês',
-                    'Mês', 'Ocorrências')
+    plt.title('Total de óbitos e infecções por mês')
+    plt.xlabel('Mês')
+    plt.ylabel('Ocorrências')
     plt.legend()
-    plt.grid(True)
-    plt.xticks(rotation=30) # Defina a rotação das etiquetas do eixo x (30 graus)
-    plt.subplots_adjust(top=0.9, bottom=0.18, left=0.13, right=0.90) # Ajuste das margens
+    plt.grid(True)  # Ativa a grade no gráfico
+    plt.xticks(rotation=30)  # Rotaciona os rótulos do eixo x em 30 graus
+    plt.subplots_adjust(top=0.9, bottom=0.18, left=0.13, right=0.90)  # Ajuste das margens
     plt.show()
 
-    return None
-
-def plotar_letalidade(df:pd.DataFrame) -> None:
+def plotar_letalidade(df: pd.DataFrame) -> None:
     """
     Plota a variação da letalidade da doença ao longo dos anos.
 
     Parâmetros
     ----------
     df : pd.DataFrame
-        DataFrame contendo informações de letalidade por ano.
+        DataFrame contendo a letalidade por ano.
 
     Retorno
     -------
     None
     """
-    # Criação de arrays com as séries de valores
-    anos = df.iloc[:, 0].values
-    letalidade = df.iloc[:, 1].values
+    try:
+        # Tentar acessar as colunas necessárias no DataFrame
+        anos = df['ANO_IS']
+        infectados = df['INFECTADOS']
+        letalidade = df['LETALIDADE']
+    except KeyError as e:
+        # Se alguma das colunas estiver ausente, capture a exceção e forneça uma mensagem de erro
+        print(f"Erro: A coluna {e} não está presente no DataFrame.")
+        return
 
-    # Plotagem das séries de valores em um gráfico de linhas
-    plt.plot(anos, letalidade)
+    # Dimensões do gráfico
+    plt.figure(figsize=[8, 5])
+    # Cria gráfico de dispersão com cores
+    plt.scatter(anos, letalidade, c=infectados, cmap='viridis', s=100, zorder=2)
+    plt.plot(anos, letalidade, zorder=1)  # Cria uma linha de tendência
+    plt.colorbar(label='Infectados')  # Cria uma barra de cores (legenda)
 
     # Configuração da plotagem (legendas, títulos, etc)
-    definir_rotulos('Variação da letalidade da febre amarela',
-                    'Ano', 'Letalidade')
-    plt.grid(True)
+    plt.title("Relação entre Letalidade e Infecções por Ano")
+    plt.ylabel("Letalidade")
+    plt.grid(axis='y', linestyle='--')  # Grade no eixo y com estilo de linha tracejada
+    plt.gca().yaxis.set_major_formatter('{:.0%}'.format)  # Formatação da escala no eixo y em porcentagem
     plt.show()
 
     return None
