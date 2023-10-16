@@ -3,9 +3,13 @@ import numpy as np
 import limpfilt as lf
 from limpfilt import *
 import matplotlib.pyplot as plt
+import seaborn as sns
 
-df = pd.read_csv('fa_casoshumanos_1994-2021.csv', sep = ';', encoding='ISO-8859-1')
-df.set_index('ID', inplace = True)
+#df = pd.read_csv('fa_casoshumanos_1994-2021.csv', sep = ';', encoding='ISO-8859-1')
+#df.set_index('ID', inplace = True)
+
+df = lf.carregar_dataframe('../fa_casoshumanos_1994-2021.csv')
+
 
 lf.nan_cleaner(df)
 lf.ftr_idades(df)
@@ -20,6 +24,9 @@ ndf = lf.filtra_dados(df, colunas = ['SEXO','IDADE', 'ANO_IS', 'OBITO'], linhas=
 total = len(ndf['OBITO'])
 mortes_count = ndf['OBITO'].value_counts()
 porcent_obitos = (mortes_count["SIM"] / total) * 100
+
+# Filtra o dataframe para obter apenas os casos com mortes 
+mortes = ndf[ndf["OBITO"] == "SIM"]
 
 # (vis1.png)
 def tmortes_vis():
@@ -40,6 +47,7 @@ def tmortes_vis():
         plt.text(i, count, f"{count} ({(count / total * 100):.2f}%)", ha="center", va="bottom")
 
     plt.show()
+
 
 # (vis2.png)
 def mtpor_ano():
@@ -64,25 +72,37 @@ def mtpor_ano():
     plt.show()
 
 
-
 # vis3.png)
 def mtgenero_vis():
     """
     Cria a visualização da contagem de mortos por gênero ao longo do tempo.
     """
 
-    # Filtra o dataframe para obter apenas os casos com mortes 
-    mortes = ndf[ndf["OBITO"] == "SIM"]
-
-    # Agrupa por Ano e Gênero e conta o número de mortes 
+    # Agrupa por ano e gênero e conta o número de mortes 
     mortes_por_ano = mortes.groupby(["ANO_IS", "SEXO"]).size().unstack()
-
-    # Plotar o gráfico
 
     mortes_por_ano.plot(kind="bar")
     plt.title("Mortes por gênero ao longo do tempo")
     plt.xlabel("Ano")
     plt.ylabel("Número de mortes")
     plt.legend(title="Gênero")
+    plt.show()
+
+
+# (vis4.png)
+def mtidades_vis():
+    intervalos_idade = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+    # Cria coluna com os intervalos de idade
+    mortes.loc[:, 'INT_I'] = pd.cut(mortes['IDADE'].astype(int), bins=intervalos_idade, right=False)
+
+    # Cria uma matriz
+    heatmap_data = mortes.pivot_table(index='INT_I', columns='ANO_IS', values='OBITO', aggfunc='count')
+
+    plt.figure(figsize=(12,6))
+    sns.heatmap(heatmap_data, cmap="YlOrRd", annot=True, fmt='g', linewidths=.5, cbar_kws={'label': 'Número de mortos'})
+    plt.title("Quantidade de mortos ao longo do tempo")
+    plt.xlabel("Ano")
+    plt.ylabel("Idade")
     plt.show()
 

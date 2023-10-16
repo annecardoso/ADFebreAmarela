@@ -115,14 +115,8 @@ def ftr_dt_is(data_str):
         return False
     except (TypeError, ValueError):
         return True
-<<<<<<< HEAD
     
 def rem_inv_dtis(df):  
-=======
-
-
-def rem_inv_dtis(df):  # TODO: CRIAR CSV COM df DE ASSINT/DECIDIR OQ FAZER
->>>>>>> b4eb8beef0370659e8692347b97dc1037cccd503
     """
     Retira linhas com valores inválidos de DT_IS.
     Guarda casos assintomáticos em um novo dataframe.
