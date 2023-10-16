@@ -27,23 +27,23 @@ O repositório contém os seguintes elementos:
   
 ## Resultados e visualização
 
-1. 
+1. Neste gráfico é possível observar a maior ocorrência de febre amarela nos estados que compõem a região sudeste. Porém, uma das causas relacionadas a isso pode ser a quantidade populacional que é maior nesses estados.
 ![Infecções por Unidade Federativa](./img/infec_uf.png)
 
-2.
+2. Para os óbitos registrados, o cenário é semelhante ao gráfico anterior.
 ![Óbitos por Unidade Federativa](./img/obitos_uf.png)
 
-3.
+1. Entretanto, quando analisamos de forma relativa, levando em consideração os dados populacionais de cada Estado de acordo com o censo do IBGE de 2010, observamos um maior destaque de incidência para o Espírito Santo. Além disso, observamos Roraima ficando em maior evidência do que nas análises anteriores. 
 ![Infecções (relativa) por Unidade Federativa](./img/infec_rel_uf.png)
 
-4.
+4. Em relação aos óbitos a cada cem mil habitantes do respectivo estado, percebemos as regiões Norte e Centro-Oeste ganhando um pouco mais de destaque, enquanto Roraima se destaca ainda mais.
 ![Óbitos (relativo) por Unidade Federativa](./img/obitos_rel_uf.png)
 
-5.
+5. Deste gráfico é possível concluir que houve um surto de febre amarela no Brasil por volta de 2017. De fato, obtemos essa confirmação ao pesquisar sobre o assunto: https://pt.wikipedia.org/wiki/Surto_de_febre_amarela_no_Brasil_em_2016-2017
 ![Ocorrências de Infectados e óbitos por ano](./img/infec_e_obitos_ano.png)
 
-6.
+1. Deste gráfico podemos extrair que há maiores notificações nos meses em que o verão acontece no Brasil.
 ![Ocorrências de Infectados e óbitos por mês](./img/infec_e_obitos_mes.png)
 
-7.
+7. Deste gráfico é possível supor que a letalidade da doença esteja entre 0 e 1%. Além disso, nos últimos anos a taxa esteve por volta de 0.5%, talvez haja influência do aumento da taxa de vacinação.
 ![Variação da letalidade da febre amarela](./img/variacao_letalidade.png)
