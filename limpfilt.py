@@ -3,10 +3,46 @@ import numpy as np
 from datetime import datetime
 from pathlib import Path
 
-raiz_projeto = Path(__file__).parent
-caminho_dados_fa = str(raiz_projeto) + '/Dados/' + 'fa_casoshumanos_1994-2021.csv'
-df = pd.read_csv(caminho_dados_fa, sep=';', encoding='ISO-8859-1')
-df.set_index('ID', inplace=True)
+
+def carregar_dataframe(arquivo:str) -> pd.DataFrame:
+    """
+    Carrega um DataFrame a partir de um arquivo CSV.
+
+    Parâmetros
+    ----------
+    str
+        Uma string com o nome do arquivo da pasta Dados a ser carregado como DataFrame
+
+    Retorno
+    -------
+    pd.DataFrame
+        O DataFrame carregado com os dados ou None se houver um erro.
+    """
+    try:
+        # Obtém o caminho para o arquivo com os dados da Febre Amarela
+        raiz_do_projeto = str(Path(__file__).parent)
+        caminho_arquivo = raiz_do_projeto + '/Dados/' + arquivo
+
+        # Obtém a extensão do arquivo
+        extensao = Path(caminho_arquivo).suffix
+
+        # Tenta carregar um DataFrame a partir de um arquivo
+        if extensao == '.csv':
+            df = pd.read_csv(caminho_arquivo, sep=';', encoding='ISO-8859-1')
+        else:
+            raise ValueError
+
+        df.set_index('ID', inplace=True)
+        return df
+    except FileNotFoundError as excp:
+        # Trata exceção se o arquivo CSV não for encontrado
+        print(f"Erro ao carregar o arquivo: {excp}")
+        return None
+    except ValueError as excp:
+        print(f"Erro {excp}. O arquivo não é de um tipo suportado, ele deve ser um CSV.")
+    except Exception as excp:
+        print(f"Erro ao carregar o dataframe: {excp}")
+
 
 
 def nan_cleaner(df):
@@ -195,6 +231,27 @@ def rem_inv_obitos(df):
     """
     inv_obitos = df.query('OBITO != "NÃO" & OBITO != "SIM"')  # df com apenas linhas erradas de óbitos
     df.drop(inv_obitos.index, inplace=True)
+
+def limpar_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Realiza uma série de operações para limpar o DataFrame.
+
+    Parâmetros
+    ----------
+    df : pd.DataFrame
+        O DataFrame a ser limpo.
+
+    Retorno
+    -------
+    pd.DataFrame
+        O DataFrame limpo após as operações.
+    """
+    nan_cleaner(df)
+    rem_inv_dtis(df)
+    ftr_idades(df)
+    rem_inv_obitos(df)
+    df_limpo = rem_dupli(df)
+    return df_limpo
 
 
 #######Funções de Filtragem

@@ -1,9 +1,16 @@
 import pandas as pd
 import geopandas as gpd
 import utils
+import limpfilt as lf
 
-df, states = utils.carregar_dataframes()
+# Carregamento da bases de dados
+df = lf.carregar_dataframe('fa_casoshumanos_1994-2021.csv')
+states = utils.carregar_geodataframe()
+
 states = utils.filtragem_populacao(states)
+
+# Limpeza do dataframe
+df = lf.limpar_dataframe(df)
 
 # Analisa os óbitos por unidade federativa
 gdf_obitos_uf = utils.obitos_por_uf(df, states)

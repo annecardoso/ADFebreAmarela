@@ -2,50 +2,6 @@ import pandas as pd
 import limpfilt as lf
 from pathlib import Path
 
-def carregar_dataframes() -> pd.DataFrame:
-    """
-    Carrega um DataFrame a partir de um arquivo CSV.
-
-    Retorno
-    -------
-    pd.DataFrame
-        O DataFrame carregado com os dados ou None se houver um erro.
-    """
-    try:
-        # Obtém o caminho para o arquivo com os dados da Febre Amarela
-        raiz_do_projeto = str(Path(__file__).parent.parent)
-        caminho_arquivo_FA = raiz_do_projeto + '/Dados/fa_casoshumanos_1994-2021.csv'
-
-        # Tenta carregar um DataFrame a partir de um arquivo CSV
-        df = pd.read_csv(caminho_arquivo_FA, sep=';', encoding='ISO-8859-1')
-        return df
-    except FileNotFoundError as e:
-        # Trata exceção se o arquivo CSV não for encontrado
-        print(f"Erro ao carregar o arquivo CSV: {e}")
-        return None
-
-
-def limpar_dataframe(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Realiza uma série de operações para limpar o DataFrame.
-
-    Parâmetros
-    ----------
-    df : pd.DataFrame
-        O DataFrame a ser limpo.
-
-    Retorno
-    -------
-    pd.DataFrame
-        O DataFrame limpo após as operações.
-    """
-    lf.nan_cleaner(df)
-    lf.rem_inv_dtis(df)
-    lf.ftr_idades(df)
-    lf.rem_inv_obitos(df)
-    df_limpo = lf.rem_dupli(df)
-    return df_limpo
-
 def organizar_df_datas(df: pd.DataFrame) -> pd.DataFrame:
     """
     Faz um tratamento no DataFrame para que tenha apenas as informações de datas, óbitos e infecções.

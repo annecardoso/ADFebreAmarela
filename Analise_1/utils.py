@@ -1,41 +1,37 @@
 import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
+from pathlib import Path
 
-def carregar_dataframes() -> tuple:
+def carregar_geodataframe() -> gpd.GeoDataFrame:
     """
-    Esta função carrega DataFrames a partir de arquivos CSV e GeoJSON.
+    Esta função carrega GeoDataFrames a partir de arquivos GeoJSON.
 
     Retorno
     -------
-    Tuple
-        Um par de DataFrames contendo dados de óbitos e informações geoespaciais dos estados.
+    GeoDataFrame
+        Um GeoDataFrame contendo informações geoespaciais dos estados.
         
-    >>> df, states = carregar_dataframes()
-    >>> isinstance(df, pd.DataFrame)
+    >>> states = carregar_dataframes()
+    >>> isinstance(pd.DataFrame)
     True
     >>> isinstance(states, gpd.GeoDataFrame)
     True
-    """   
+    """
     try:
-        # Tenta carregar um DataFrame a partir de um arquivo CSV
-        df = pd.read_csv('Dados/fa_casoshumanos_1994-2021.csv', sep=';', encoding='ISO-8859-1')
-        
-    except FileNotFoundError as e:
-        # Trata exceção se o arquivo CSV não for encontrado
-        print(f"Erro ao carregar o arquivo CSV: {e}")
-        df = None
-        
-    try:
+        # Obtém o caminho para o arquivo com os dados da Febre Amarela
+        raiz_do_projeto = str(Path(__file__).parent.parent)
+        caminho_arquivo = raiz_do_projeto + '/Dados/br_states.json'
+
         # Tenta carregar um GeoDataFrame a partir de um arquivo GeoJSON    
-        states = gpd.read_file('Dados/br_states.json')
+        states = gpd.read_file(caminho_arquivo)
         
     except FileNotFoundError as e:
         # Trata exceção se o arquivo GeoJSON não for encontrado
         print(f"Erro ao carregar o arquivo GeoJSON: {e}")
         states = None
     
-    return df, states
+    return states
 
 def filtragem_populacao(states_input: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
     """
