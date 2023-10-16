@@ -54,4 +54,3 @@ O repositório contém os seguintes elementos:
 7. A variação da letalidade da doença ao longo dos anos não possui nenhuma tendência. Ainda assim, podemos ver que os anos com muitos infectados, ou seja, nos quais há uma amostra significativa, os pontos estão na mesma faixa. Tomando esse ponto como norma, temos que a letalidade está por volta de 35%
 
 ![Variação da letalidade da febre amarela](./img/variacao_letalidade.png)
-etalidade da febre amarela](./img/variacao_letalidade.png)
