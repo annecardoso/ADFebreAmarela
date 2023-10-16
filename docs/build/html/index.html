@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to ADFebreAmarela’s documentation! &mdash; documentação ADFebreAmarela </title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            ADFebreAmarela
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to ADFebreAmarela’s documentation!</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">ADFebreAmarela</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to ADFebreAmarela’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-limpfilt">
+<span id="welcome-to-adfebreamarela-s-documentation"></span><h1>Welcome to ADFebreAmarela’s documentation!<a class="headerlink" href="#module-limpfilt" title="Link permanente para este título"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.carregar_dataframe">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">carregar_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arquivo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#limpfilt.carregar_dataframe" title="Link permanente para esta definição"></a></dt>
+<dd><p>Carrega um DataFrame a partir de um arquivo CSV.</p>
+<dl class="simple">
+<dt>str</dt><dd><p>Uma string com o nome do arquivo da pasta Dados a ser carregado como DataFrame</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>O DataFrame carregado com os dados ou None se houver um erro.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.filtra_dados">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">filtra_dados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colunas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linhas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nome_csv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpfilt.filtra_dados" title="Link permanente para esta definição"></a></dt>
+<dd><p>Filtra colunas ou linhas de um dataframe, gerando um novo dataframe com
+os dados selecionados e opcionalmente os salva em um arquivo CSV.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>Dataframe original.</p>
+</dd>
+<dt>colunas<span class="classifier">list, dict, np.array, pd.Series</span></dt><dd><p>Colunas a serem selecionadas. Pode ser uma lista de nomes de colunas, um dicionário, np.array ou uma série Pandas.
+Se não especificadas, todas as colunas são selecionadas.</p>
+</dd>
+<dt>linhas<span class="classifier">slice, list, dict, np.array, pd.Series</span></dt><dd><p>Linhas a serem selecionadas. Pode ser uma slice, uma lista de índices, um dicionário, np.array ou uma série Pandas.
+Se não especificadas, todas as linhas são selecionadas.</p>
+</dd>
+<dt>nome_csv<span class="classifier">str</span></dt><dd><p>Nome do arquivo CSV para salvar os dados. Se fornecido, os dados serão salvos em um arquivo CSV com esse nome.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe gerado com os dados selecionados.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dic5</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_fil</span> <span class="o">=</span> <span class="n">filtra_dados</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">colunas</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_fil</span>
+<span class="go">   a  b</span>
+<span class="go">0  1  4</span>
+<span class="go">1  2  5</span>
+<span class="go">2  3  6</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df_fil</span> <span class="o">=</span> <span class="n">filtra_dados</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">linhas</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_fil</span>
+<span class="go">   a  b  c</span>
+<span class="go">1  2  5  8</span>
+<span class="go">2  3  6  9</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.ftr_dt_is">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">ftr_dt_is</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpfilt.ftr_dt_is" title="Link permanente para esta definição"></a></dt>
+<dd><p>Recebe uma string e verifica se é uma data válida.
+Parâmetros
+———-
+data_str : str</p>
+<blockquote>
+<div><p>Célula da coluna de datas do início dos sintomas.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Bool</dt><dd><p>True quando o valor é inválido e False caso contrário.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.ftr_idades">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">ftr_idades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpfilt.ftr_idades" title="Link permanente para esta definição"></a></dt>
+<dd><p>Recebe o dataframe e trata a coluna de idades.
+Valores não inteiros são tornados válidos e linhas com idades 0
+e maiores que 130 são retiradas do dataframe principal e separados
+em um dataframe de erro.</p>
+<p>df : pd.DataFrame</p>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe com as linhas contendo idades descartadas.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dic2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;IDADE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;0,6&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="s1">&#39;c3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df3</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df3</span>
+<span class="go">   c1 IDADE  c3</span>
+<span class="go">0   1     4   7</span>
+<span class="go">1   2   0,6   8</span>
+<span class="go">2   3     6   9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftr_idades</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
+<span class="go">   c1 IDADE  c3</span>
+<span class="go">1   2     0   8</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.is_integer">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">is_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpfilt.is_integer" title="Link permanente para esta definição"></a></dt>
+<dd><p>Testa se o valor pode ser convertido em inteiro.</p>
+<p>value : str</p>
+<dl class="simple">
+<dt>Bool</dt><dd><p>True se é inteiro e False caso contrário.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.limpar_dataframe">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">limpar_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#limpfilt.limpar_dataframe" title="Link permanente para esta definição"></a></dt>
+<dd><p>Realiza uma série de operações para limpar o DataFrame.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>O DataFrame a ser limpo.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>O DataFrame limpo após as operações.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.nan_cleaner">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">nan_cleaner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpfilt.nan_cleaner" title="Link permanente para esta definição"></a></dt>
+<dd><p>Cria um dataframe apenas com as linhas que possuem valores NaN
+e modifica o dataframe original, retirando-as.</p>
+<p>df : pd.DataFrame
+Retorno
+——-
+pd.DataFrame</p>
+<blockquote>
+<div><p>Dataframe destacado com linhas NaN.</p>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]),</span>
+<span class="gp">... </span>                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nan_cleaner</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span>
+<span class="go">   a     b  c</span>
+<span class="go">1  4  &lt;NA&gt;  6</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.operacao_colunas">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">operacao_colunas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colunas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nova_coluna</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operacao</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpfilt.operacao_colunas" title="Link permanente para esta definição"></a></dt>
+<dd><p>Realiza uma operação entre colunas do dataframe e cria uma nova coluna com o resultado.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>Dataframe que contém as colunas originais.</p>
+</dd>
+<dt>colunas<span class="classifier">dict, np.array, pd.Series, list</span></dt><dd><p>Lista com as colunas a serem usadas na operação. Pode ser um dicionário, u
+ma array NumPy, uma série Pandas ou uma lista de nomes de colunas.</p>
+</dd>
+<dt>nova_coluna<span class="classifier">str</span></dt><dd><p>Nome da coluna que será criada para armazenar o resultado da operação.</p>
+</dd>
+<dt>operacao<span class="classifier">function ou str</span></dt><dd><p>A operação a ser realizada. Pode ser uma função ou uma string (‘+’, ‘-’, ‘*’, ‘/’, ‘media’, ‘dvp’, ‘mediana’, ‘min’, ‘max’).</p>
+</dd>
+<dt>custom_func<span class="classifier">function</span></dt><dd><p>Uma função customizada que pode ser usada como operação.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>O dataframe original com a nova coluna .</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dic2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s1">&#39;c2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s1">&#39;c3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span> <span class="o">=</span> <span class="n">operacao_colunas</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;c1&#39;</span><span class="p">,</span> <span class="s1">&#39;c2&#39;</span><span class="p">,</span> <span class="s1">&#39;c3&#39;</span><span class="p">],</span> <span class="s1">&#39;Soma&#39;</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span> <span class="o">=</span> <span class="n">operacao_colunas</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;c1&#39;</span><span class="p">,</span> <span class="s1">&#39;c2&#39;</span><span class="p">,</span> <span class="s1">&#39;c3&#39;</span><span class="p">],</span> <span class="s1">&#39;Média&#39;</span><span class="p">,</span> <span class="s1">&#39;media&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">custom_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;c1&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;c2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;c3&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span> <span class="o">=</span> <span class="n">operacao_colunas</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;c1&#39;</span><span class="p">,</span> <span class="s1">&#39;c2&#39;</span><span class="p">,</span> <span class="s1">&#39;c3&#39;</span><span class="p">],</span> <span class="s1">&#39;Resultado&#39;</span><span class="p">,</span> <span class="n">custom_function</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span>
+<span class="go">    c1  c2  c3  Soma  Média  Resultado</span>
+<span class="go">0   1   4   7    12    4.0         -1</span>
+<span class="go">1   2   5   8    15    5.0          1</span>
+<span class="go">2   3   6   9    18    6.0          3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.rem_dupli">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">rem_dupli</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpfilt.rem_dupli" title="Link permanente para esta definição"></a></dt>
+<dd><p>Remove linhas duplicadas.</p>
+<p>df : pd.DataFrame
+Retorno
+——-
+pd.DataFrame</p>
+<blockquote>
+<div><p>Dataframe atualizado.</p>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]),</span>
+<span class="gp">... </span>                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rem_dupli</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="go">   a  b  c</span>
+<span class="go">0  1  2  3</span>
+<span class="go">1  4  5  6</span>
+<span class="go">3  7  8  9</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.rem_inv_dtis">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">rem_inv_dtis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpfilt.rem_inv_dtis" title="Link permanente para esta definição"></a></dt>
+<dd><p>Retira linhas com valores inválidos de DT_IS.
+Guarda casos assintomáticos em um novo dataframe.</p>
+<p>df : pd.DataFrame</p>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Dataframe de assintomáticos.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">df</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;10/05/2002&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Assintomático&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;00/05/2002&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Assintomático&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]),</span>
+<span class="gp">... </span>                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;DT_IS&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rem_inv_dtis</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df3</span>
+<span class="go">   a          DT_IS  c</span>
+<span class="go">1  4     10/05/2002  6</span>
+<span class="go">2  4  Assintomático  6</span>
+<span class="go">4  1  Assintomático  3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.rem_inv_obitos">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">rem_inv_obitos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpfilt.rem_inv_obitos" title="Link permanente para esta definição"></a></dt>
+<dd><p>Remove linhas com valores inválidos na coluna de óbitos.</p>
+<p>df : pd.DataFrame</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dic2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;c1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;OBITO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SIM&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;NÃO&#39;</span><span class="p">],</span> <span class="s1">&#39;c3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rem_inv_obitos</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span>
+<span class="go">   c1 OBITO  c3</span>
+<span class="go">1   2     5   8</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limpfilt.remover_coluna">
+<span class="sig-prename descclassname"><span class="pre">limpfilt.</span></span><span class="sig-name descname"><span class="pre">remover_coluna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coluna</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limpfilt.remover_coluna" title="Link permanente para esta definição"></a></dt>
+<dd><p>Remove uma coluna específica de um DataFrame.</p>
+<dl class="simple">
+<dt>df: pd.DataFrame</dt><dd><p>O dataframe original.</p>
+</dd>
+<dt>coluna<span class="classifier">str</span></dt><dd><p>O nome da coluna a ser removida.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>O dataframe original com a coluna removida.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dic3</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dic3</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df3</span> <span class="o">=</span> <span class="n">remover_coluna</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df3</span>
+<span class="go">   a  c</span>
+<span class="go">0  1  7</span>
+<span class="go">1  2  8</span>
+<span class="go">2  3  9</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-utils"></span><dl class="py function">
+<dt class="sig sig-object py" id="utils.carregar_geodataframe">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">carregar_geodataframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></span><a class="headerlink" href="#utils.carregar_geodataframe" title="Link permanente para esta definição"></a></dt>
+<dd><p>Esta função carrega GeoDataFrames a partir de arquivos GeoJSON.</p>
+<dl class="simple">
+<dt>GeoDataFrame</dt><dd><p>Um GeoDataFrame contendo informações geoespaciais dos estados.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">states</span> <span class="o">=</span> <span class="n">carregar_dataframes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.filtragem_populacao">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">filtragem_populacao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">states_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></span><a class="headerlink" href="#utils.filtragem_populacao" title="Link permanente para esta definição"></a></dt>
+<dd><p>Esta função faz uma cópia do GeoDataFrame de estados e atualiza a população total de estados específicos com base no Censo IBGE 2010.</p>
+<dl class="simple">
+<dt>states_input<span class="classifier">GeoDataFrame</span></dt><dd><p>GeoDataFrame contendo as geometrias de estados.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>GeoDataFrame</dt><dd><p>Um novo GeoDataFrame com as populações de estados específicos atualizadas.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geopandas</span> <span class="kn">import</span> <span class="n">GeoDataFrame</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;SIGLA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SP&#39;</span><span class="p">,</span> <span class="s1">&#39;RJ&#39;</span><span class="p">,</span> <span class="s1">&#39;MG&#39;</span><span class="p">,</span> <span class="s1">&#39;PR&#39;</span><span class="p">],</span> <span class="s1">&#39;Total&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">states_input</span> <span class="o">=</span> <span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">states</span> <span class="o">=</span> <span class="n">filtragem_populacao</span><span class="p">(</span><span class="n">states_input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">states</span><span class="p">[</span><span class="n">states</span><span class="p">[</span><span class="s1">&#39;SIGLA&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;SP&#39;</span><span class="p">][</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">37035456</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">states</span><span class="p">[</span><span class="n">states</span><span class="p">[</span><span class="s1">&#39;SIGLA&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;PR&#39;</span><span class="p">][</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">9564643</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.infec_por_uf">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">infec_por_uf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></span><a class="headerlink" href="#utils.infec_por_uf" title="Link permanente para esta definição"></a></dt>
+<dd><p>Esta função calcula o número de infecções por unidade federativa, mesclando os dados com informações geoespaciais.</p>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>DataFrame com informações de óbitos.</p>
+</dd>
+<dt>states<span class="classifier">GeoDataFrame</span></dt><dd><p>GeoDataFrame com geometrias de estados.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>GeoDataFrame</dt><dd><p>Um GeoDataFrame que combina os dados de infecções e informações geoespaciais.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.infec_rel_por_uf">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">infec_rel_por_uf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></span><a class="headerlink" href="#utils.infec_rel_por_uf" title="Link permanente para esta definição"></a></dt>
+<dd><p>Esta função calcula a taxa de infecção por cada 100.000 habitantes por unidade federativa, mesclando os dados com informações geoespaciais.</p>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>DataFrame com informações de óbitos.</p>
+</dd>
+<dt>states<span class="classifier">GeoDataFrame</span></dt><dd><p>GeoDataFrame com geometrias de estados.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>GeoDataFrame</dt><dd><p>Um GeoDataFrame que combina os dados da taxa de infecção e informações geoespaciais.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.obitos_por_uf">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">obitos_por_uf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></span><a class="headerlink" href="#utils.obitos_por_uf" title="Link permanente para esta definição"></a></dt>
+<dd><p>Esta função calcula o número de óbitos por unidade federativa e mescla com dados geoespaciais.</p>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>DataFrame com informações de óbitos.</p>
+</dd>
+<dt>states<span class="classifier">GeoDataFrame</span></dt><dd><p>GeoDataFrame com geometrias de estados.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>GeoDataFrame</dt><dd><p>Um GeoDataFrame que combina os dados de óbitos e informações geoespaciais.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">,</span> <span class="n">states</span> <span class="o">=</span> <span class="n">carregar_dataframes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gdf_obitos_uf</span> <span class="o">=</span> <span class="n">obitos_por_uf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">states</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">gdf_obitos_uf</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.obitos_rel_por_uf">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">obitos_rel_por_uf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></span><a class="headerlink" href="#utils.obitos_rel_por_uf" title="Link permanente para esta definição"></a></dt>
+<dd><p>Esta função calcula a taxa de óbitos por 100.000 habitantes em cada unidade federativa, mesclando os dados com informações geoespaciais.</p>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>DataFrame com informações de óbitos.</p>
+</dd>
+<dt>states<span class="classifier">GeoDataFrame</span></dt><dd><p>GeoDataFrame com geometrias de estados.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>GeoDataFrame</dt><dd><p>Um GeoDataFrame que combina os dados de óbitos relativos e informações geoespaciais.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.plot_infec_rel_uf">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">plot_infec_rel_uf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdf_infec_rel_uf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.plot_infec_rel_uf" title="Link permanente para esta definição"></a></dt>
+<dd><p>Esta função gera um mapa de calor representando o número de infecções por cada 100.000 habitantes por unidade federativa.</p>
+<dl class="simple">
+<dt>gdf_infec_rel_uf<span class="classifier">GeoDataFrame</span></dt><dd><p>GeoDataFrame contendo dados do número de infecções por cada 100.000 habitantes por unidade federativa.</p>
+</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.plot_infec_uf">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">plot_infec_uf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdf_infec_rel_uf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.plot_infec_uf" title="Link permanente para esta definição"></a></dt>
+<dd><p>Gera um mapa de calor de infecções por unidade federativa.</p>
+<p>Esta função gera um mapa de calor representando o número de infecções por unidade federativa.</p>
+<dl class="simple">
+<dt>gdf_infec_rel_uf<span class="classifier">GeoDataFrame</span></dt><dd><p>GeoDataFrame contendo dados do número de infecções por unidade federativa.</p>
+</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.plot_obitos_rel_uf">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">plot_obitos_rel_uf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdf_obitos_rel_uf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.plot_obitos_rel_uf" title="Link permanente para esta definição"></a></dt>
+<dd><p>Esta função gera um mapa de calor representando a taxa de óbitos por cada 100.000 habitantes por unidade federativa.</p>
+<dl class="simple">
+<dt>gdf_obitos_rel_uf<span class="classifier">GeoDataFrame</span></dt><dd><p>GeoDataFrame contendo dados da taxa de óbitos por cada 100.000 habitantes por unidade federativa.</p>
+</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.plot_obitos_uf">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">plot_obitos_uf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gdf_obitos_uf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">geopandas.geodataframe.GeoDataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#utils.plot_obitos_uf" title="Link permanente para esta definição"></a></dt>
+<dd><p>Esta função gera um mapa de calor de óbitos por unidade federativa.</p>
+<dl class="simple">
+<dt>gdf_obitos_uf<span class="classifier">GeoDataFrame</span></dt><dd><p>GeoDataFrame contendo dados de óbitos por unidade federativa.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-tratamento_dados"></span><dl class="py function">
+<dt class="sig sig-object py" id="tratamento_dados.organizar_df_ano">
+<span class="sig-prename descclassname"><span class="pre">tratamento_dados.</span></span><span class="sig-name descname"><span class="pre">organizar_df_ano</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#tratamento_dados.organizar_df_ano" title="Link permanente para esta definição"></a></dt>
+<dd><p>Organiza um DataFrame relacionando a cada ano uma quantidade de casos e mortes por febre amarela.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame contendo informações de datas, infecções e mortes.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Um novo DataFrame com o número de infectados e mortos por ano.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tratamento_dados.organizar_df_datas">
+<span class="sig-prename descclassname"><span class="pre">tratamento_dados.</span></span><span class="sig-name descname"><span class="pre">organizar_df_datas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#tratamento_dados.organizar_df_datas" title="Link permanente para esta definição"></a></dt>
+<dd><p>Faz um tratamento no DataFrame para que tenha apenas as informações de datas, óbitos e infecções.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame contendo as informações de datas e óbitos.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Um novo DataFrame com as datas no formato desejado e a contagem de óbitos e infectados.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dados</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ANO_IS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">],</span> <span class="s1">&#39;MES_IS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="s1">&#39;OBITO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SIM&#39;</span><span class="p">,</span> <span class="s1">&#39;NÃO&#39;</span><span class="p">,</span> <span class="s1">&#39;IGN&#39;</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">saida</span> <span class="o">=</span> <span class="n">organizar_df_datas</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">saida</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">saida</span><span class="p">[</span><span class="s1">&#39;ANO_IS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="o">==</span> <span class="p">{</span><span class="mi">2019</span><span class="p">,</span><span class="mi">2020</span><span class="p">,</span><span class="mi">2021</span><span class="p">}</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">saida</span><span class="p">[</span><span class="s1">&#39;OBITO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="o">==</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">saida</span><span class="p">[</span><span class="s1">&#39;INFECTADOS&#39;</span><span class="p">],</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tratamento_dados.organizar_df_letalidade">
+<span class="sig-prename descclassname"><span class="pre">tratamento_dados.</span></span><span class="sig-name descname"><span class="pre">organizar_df_letalidade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#tratamento_dados.organizar_df_letalidade" title="Link permanente para esta definição"></a></dt>
+<dd><p>Organiza o DataFrame para facilitar uma análise específica. Para isso,
+há a exclusão de colunas e adição de uma coluna referente à letalidade da doença.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame agrupado por ano contendo informações de óbitos e infectados.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Um novo DataFrame com uma relação de letalidade por ano.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dados</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ANO_IS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">],</span> <span class="s1">&#39;OBITO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="s1">&#39;INFECTADOS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">50</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">saida</span> <span class="o">=</span> <span class="n">organizar_df_letalidade</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letalidade</span> <span class="o">=</span> <span class="n">saida</span><span class="p">[</span><span class="s1">&#39;LETALIDADE&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letalidade</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.5</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letalidade</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.2</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letalidade</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.6</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tratamento_dados.organizar_df_mes">
+<span class="sig-prename descclassname"><span class="pre">tratamento_dados.</span></span><span class="sig-name descname"><span class="pre">organizar_df_mes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#tratamento_dados.organizar_df_mes" title="Link permanente para esta definição"></a></dt>
+<dd><p>Organiza o DataFrame para facilitar uma análise específica, reduzindo os dados ao total de infecções e óbitos em relação aos meses do ano.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame contendo informações de datas, infecções e óbitos.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>Um novo DataFrame com a contagem de óbitos e infecções em cada mês.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dados</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ANO_IS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">],</span> <span class="s1">&#39;MES_IS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="s1">&#39;OBITO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;INFECTADOS&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">saida</span> <span class="o">=</span> <span class="n">organizar_df_mes</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">meses</span> <span class="o">=</span> <span class="n">saida</span><span class="p">[</span><span class="s1">&#39;MES_IS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">meses</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;abril&#39;</span><span class="p">,</span><span class="s1">&#39;janeiro&#39;</span><span class="p">}</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obitos</span> <span class="o">=</span> <span class="n">saida</span><span class="p">[</span><span class="s1">&#39;OBITO&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obitos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">saida</span><span class="p">[</span><span class="s1">&#39;INFECTADOS&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-visualizacao"></span><dl class="py function">
+<dt class="sig sig-object py" id="visualizacao.plotar_letalidade">
+<span class="sig-prename descclassname"><span class="pre">visualizacao.</span></span><span class="sig-name descname"><span class="pre">plotar_letalidade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#visualizacao.plotar_letalidade" title="Link permanente para esta definição"></a></dt>
+<dd><p>Plota a variação da letalidade da doença ao longo dos anos.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame contendo a letalidade e óbitos por ano.</p>
+</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="visualizacao.plotar_mortes_por_mes">
+<span class="sig-prename descclassname"><span class="pre">visualizacao.</span></span><span class="sig-name descname"><span class="pre">plotar_mortes_por_mes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#visualizacao.plotar_mortes_por_mes" title="Link permanente para esta definição"></a></dt>
+<dd><p>Plota o total de óbitos e infecções por mês.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame contendo informações de óbitos e infecções por mês.</p>
+</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="visualizacao.plotar_ocorrencias_ano">
+<span class="sig-prename descclassname"><span class="pre">visualizacao.</span></span><span class="sig-name descname"><span class="pre">plotar_ocorrencias_ano</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#visualizacao.plotar_ocorrencias_ano" title="Link permanente para esta definição"></a></dt>
+<dd><p>Plota ocorrências de infectados e óbitos por ano.</p>
+<dl class="simple">
+<dt>df<span class="classifier">pd.DataFrame</span></dt><dd><p>DataFrame contendo informações de infectados e óbitos por ano.</p>
+</dd>
+</dl>
+<p>None</p>
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link permanente para este título"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Índice</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Índice do Módulo</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Página de Busca</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Anne B. C. Sousa, Beatriz M. Bezerra, Gustavo M. C. Carvalho.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
