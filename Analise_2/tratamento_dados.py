@@ -5,12 +5,12 @@ def organizar_df_datas(df: pd.DataFrame) -> pd.DataFrame:
     """
     Faz um tratamento no DataFrame para que tenha apenas as informações de datas, óbitos e infecções.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame contendo as informações de datas e óbitos.
 
-    Retorno
+    Returns
     -------
     pd.DataFrame
         Um novo DataFrame com as datas no formato desejado e a contagem de óbitos e infectados.
@@ -50,12 +50,12 @@ def organizar_df_ano(df: pd.DataFrame) -> pd.DataFrame:
     """
     Organiza um DataFrame relacionando a cada ano uma quantidade de casos e mortes por febre amarela.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame contendo informações de datas, infecções e mortes.
 
-    Retorno
+    Returns
     -------
     pd.DataFrame
         Um novo DataFrame com o número de infectados e mortos por ano.
@@ -75,12 +75,12 @@ def organizar_df_mes(df: pd.DataFrame) -> pd.DataFrame:
     """
     Organiza o DataFrame para facilitar uma análise específica, reduzindo os dados ao total de infecções e óbitos em relação aos meses do ano.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame contendo informações de datas, infecções e óbitos.
 
-    Retorno
+    Returns
     -------
     pd.DataFrame
         Um novo DataFrame com a contagem de óbitos e infecções em cada mês.
@@ -122,12 +122,12 @@ def organizar_df_letalidade(df: pd.DataFrame) -> pd.DataFrame:
     Organiza o DataFrame para facilitar uma análise específica. Para isso,
     há a exclusão de colunas e adição de uma coluna referente à letalidade da doença.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame agrupado por ano contendo informações de óbitos e infectados.
 
-    Retorno
+    Returns
     -------
     pd.DataFrame
         Um novo DataFrame com uma relação de letalidade por ano.

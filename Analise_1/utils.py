@@ -7,7 +7,7 @@ def carregar_geodataframe() -> gpd.GeoDataFrame:
     """
     Esta função carrega GeoDataFrames a partir de arquivos GeoJSON.
 
-    Retorno
+    Returns
     -------
     GeoDataFrame
         Um GeoDataFrame contendo informações geoespaciais dos estados.
@@ -37,12 +37,12 @@ def filtragem_populacao(states_input: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
     """
     Esta função faz uma cópia do GeoDataFrame de estados e atualiza a população total de estados específicos com base no Censo IBGE 2010.
 
-    Parâmetros
+    Parameters
     ----------
     states_input : GeoDataFrame
         GeoDataFrame contendo as geometrias de estados.
 
-    Retorno
+    Returns
     -------
     GeoDataFrame
         Um novo GeoDataFrame com as populações de estados específicos atualizadas.
@@ -76,14 +76,14 @@ def obitos_por_uf(df: pd.DataFrame, states: gpd.GeoDataFrame) -> gpd.GeoDataFram
     """
     Esta função calcula o número de óbitos por unidade federativa e mescla com dados geoespaciais.
 
-    Parâmetros
+    Parameters
     ----------
     df : DataFrame
         DataFrame com informações de óbitos.
     states : GeoDataFrame
         GeoDataFrame com geometrias de estados.
 
-    Retorno
+    Returns
     -------
     GeoDataFrame
         Um GeoDataFrame que combina os dados de óbitos e informações geoespaciais.
@@ -124,14 +124,14 @@ def obitos_rel_por_uf(df: pd.DataFrame, states: gpd.GeoDataFrame) -> gpd.GeoData
     """
     Esta função calcula a taxa de óbitos por 100.000 habitantes em cada unidade federativa, mesclando os dados com informações geoespaciais.
 
-    Parâmetros
+    Parameters
     ----------
     df : DataFrame
         DataFrame com informações de óbitos.
     states : GeoDataFrame
         GeoDataFrame com geometrias de estados.
 
-    Retorno
+    Returns
     -------
     GeoDataFrame
         Um GeoDataFrame que combina os dados de óbitos relativos e informações geoespaciais.
@@ -167,14 +167,14 @@ def infec_por_uf(df: pd.DataFrame, states: gpd.GeoDataFrame) -> gpd.GeoDataFrame
     """
     Esta função calcula o número de infecções por unidade federativa, mesclando os dados com informações geoespaciais.
 
-    Parâmetros
+    Parameters
     ----------
     df : DataFrame
         DataFrame com informações de óbitos.
     states : GeoDataFrame
         GeoDataFrame com geometrias de estados.
 
-    Retorno
+    Returns
     -------
     GeoDataFrame
         Um GeoDataFrame que combina os dados de infecções e informações geoespaciais.
@@ -208,14 +208,14 @@ def infec_rel_por_uf(df: pd.DataFrame, states: gpd.GeoDataFrame) -> gpd.GeoDataF
     """
     Esta função calcula a taxa de infecção por cada 100.000 habitantes por unidade federativa, mesclando os dados com informações geoespaciais.
 
-    Parâmetros
+    Parameters
     ----------
     df : DataFrame
         DataFrame com informações de óbitos.
     states : GeoDataFrame
         GeoDataFrame com geometrias de estados.
 
-    Retorno
+    Returns
     -------
     GeoDataFrame
         Um GeoDataFrame que combina os dados da taxa de infecção e informações geoespaciais.
@@ -252,7 +252,7 @@ def plot_obitos_uf(gdf_obitos_uf: gpd.GeoDataFrame) -> None:
     """
     Esta função gera um mapa de calor de óbitos por unidade federativa.
 
-    Parâmetros
+    Parameters
     ----------
     gdf_obitos_uf : GeoDataFrame
         GeoDataFrame contendo dados de óbitos por unidade federativa.
@@ -278,12 +278,12 @@ def plot_obitos_rel_uf(gdf_obitos_rel_uf: gpd.GeoDataFrame) -> None:
     """
     Esta função gera um mapa de calor representando a taxa de óbitos por cada 100.000 habitantes por unidade federativa.
 
-    Parâmetros
+    Parameters
     ----------
     gdf_obitos_rel_uf : GeoDataFrame
         GeoDataFrame contendo dados da taxa de óbitos por cada 100.000 habitantes por unidade federativa.
 
-    Retorno
+    Returns
     -------
     None
     """
@@ -309,12 +309,12 @@ def plot_infec_uf(gdf_infec_rel_uf: gpd.GeoDataFrame) -> None:
 
     Esta função gera um mapa de calor representando o número de infecções por unidade federativa.
 
-    Parâmetros
+    Parameters
     ----------
     gdf_infec_rel_uf : GeoDataFrame
         GeoDataFrame contendo dados do número de infecções por unidade federativa.
 
-    Retorno
+    Returns
     -------
     None
 
@@ -339,12 +339,12 @@ def plot_infec_rel_uf(gdf_infec_rel_uf: gpd.GeoDataFrame) -> None:
     """
     Esta função gera um mapa de calor representando o número de infecções por cada 100.000 habitantes por unidade federativa.
 
-    Parâmetros
+    Parameters
     ----------
     gdf_infec_rel_uf : GeoDataFrame
         GeoDataFrame contendo dados do número de infecções por cada 100.000 habitantes por unidade federativa.
 
-    Retorno
+    Returns
     -------
     None
 

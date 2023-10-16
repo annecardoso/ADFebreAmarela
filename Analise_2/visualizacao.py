@@ -5,12 +5,12 @@ def plotar_ocorrencias_ano(df: pd.DataFrame) -> None:
     """
     Plota ocorrências de infectados e óbitos por ano.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame contendo informações de infectados e óbitos por ano.
 
-    Retorno
+    Returns
     -------
     None
     """
@@ -45,12 +45,12 @@ def plotar_mortes_por_mes(df: pd.DataFrame) -> None:
     """
     Plota o total de óbitos e infecções por mês.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame contendo informações de óbitos e infecções por mês.
 
-    Retorno
+    Returns
     -------
     None
     """
@@ -87,12 +87,12 @@ def plotar_letalidade(df: pd.DataFrame) -> None:
     """
     Plota a variação da letalidade da doença ao longo dos anos.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame contendo a letalidade e óbitos por ano.
 
-    Retorno
+    Returns
     -------
     None
     """

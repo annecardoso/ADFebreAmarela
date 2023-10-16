@@ -9,7 +9,7 @@ O objetivo principal deste projeto é analisar os dados relacionados à febre am
 
 ## Documentação
 A documentaão pode ser acessada pelo link abaixo:
-- [Documentação](/docs/build/html/index.html)
+- [Documentação](./docs/build/html/index.html)
 
 ## Conteúdo
 

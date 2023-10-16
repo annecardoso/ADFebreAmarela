@@ -3,10 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ADFebreAmarela's documentation!
+Bem-vindo à documentação de ADFebreAmarela!
 ==========================================
+
 .. automodule:: limpfilt
-   :members:
+   :members: carregar_dataframe, nan_cleaner, rem_dupli, ftr_dt_is, rem_inv_dtis, is_integer, ftr_idades, rem_inv_obitos, limpar_dataframe, adicionar_coluna, remover_coluna, operacao_colunas, filtra_dados
    :undoc-members:
    :show-inheritance:
 
@@ -30,13 +31,18 @@ Welcome to ADFebreAmarela's documentation!
    :undoc-members:
    :show-inheritance:
 
+.. automodule:: analisevis
+   :members: tmortes_vis, mtpor_ano, mtgenero_vis
+   :undoc-members:
+   :show-inheritance:
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
 
 
-Indices and tables
+Índices e tabelas
 ==================
 
 * :ref:`genindex`
