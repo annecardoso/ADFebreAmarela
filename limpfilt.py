@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 
-def carregar_dataframe(arquivo:str) -> pd.DataFrame:
+def carregar_dataframe(arquivo: str) -> pd.DataFrame:
     """
     Carrega um DataFrame a partir de um arquivo CSV.
 
@@ -44,10 +44,9 @@ def carregar_dataframe(arquivo:str) -> pd.DataFrame:
         print(f"Erro ao carregar o dataframe: {excp}")
 
 
-
 def nan_cleaner(df):
     """
-    Cria um dataframe apenas com as linhas que possuem valores NaN 
+    Cria um dataframe apenas com as linhas que possuem valores NaN
     e modifica o dataframe original, retirando-as.
 
     Parâmetros
@@ -81,7 +80,7 @@ def rem_dupli(df):
     df : pd.DataFrame
     Retorno
     -------
-    pd.DataFrame 
+    pd.DataFrame
         Dataframe atualizado.
     Exemplos
     --------
@@ -231,6 +230,7 @@ def rem_inv_obitos(df):
     inv_obitos = df.query('OBITO != "NÃO" & OBITO != "SIM"')  # df com apenas linhas erradas de óbitos
     df.drop(inv_obitos.index, inplace=True)
 
+
 def limpar_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
     Realiza uma série de operações para limpar o DataFrame.
@@ -252,12 +252,10 @@ def limpar_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     df_limpo = rem_dupli(df)
     return df_limpo
 
+    #######Funções de Filtragem
 
-#######Funções de Filtragem
-
-
-def adicionar_coluna(df, nome_coluna, arr_valores):
-    """
+    def adicionar_coluna(df, nome_coluna, arr_valores):
+        """
     Adiciona uma nova coluna ao dataframe cujos valores são fornecidos pela array.
 
     Parâmetros
@@ -292,7 +290,7 @@ def adicionar_coluna(df, nome_coluna, arr_valores):
         if isinstance(arr_valores, dict):
             arr_valores = pd.Series(arr_valores)
         elif isinstance(arr_valores, np.ndarray):
-            valores = pd.Series(valores.tolist())
+            arr_valores = pd.Series(arr_valores.tolist())
 
         if len(arr_valores) != len(df):
             raise ValueError("O número de elementos da array deve ser igual ao número de linhas no df.")
@@ -302,7 +300,6 @@ def adicionar_coluna(df, nome_coluna, arr_valores):
     except Exception as excp:
         print(f"Erro ao adicionar a nova coluna: {excp}")
         return None
-
 
 def remover_coluna(df, coluna):
     """
@@ -343,7 +340,6 @@ def remover_coluna(df, coluna):
     except Exception as expt:
         print(f"Erro ao remover a coluna: {expt}")
         return None
-
 
 def operacao_colunas(df, colunas, nova_coluna, operacao):
     """
@@ -482,7 +478,8 @@ def filtra_dados(df, colunas=None, linhas=None, nome_csv=None):
             if isinstance(linhas, (slice, list, dict, pd.Series, np.ndarray)):
                 df_fil = df_fil[linhas]
             else:
-                raise ValueError("O argumento 'linhas' deve ser uma slice, lista, dicionário, série ou array NumPy.")
+                raise ValueError(
+                "O argumento 'linhas' deve ser uma slice, lista, dicionário, série ou array NumPy.")
 
         if nome_csv:
             df_fil.to_csv(nome_csv, index=False)

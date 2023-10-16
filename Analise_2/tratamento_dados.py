@@ -1,31 +1,42 @@
 import pandas as pd
 import limpfilt as lf
-from pathlib import Path
 
 def organizar_df_datas(df: pd.DataFrame) -> pd.DataFrame:
     """
     Faz um tratamento no DataFrame para que tenha apenas as informações de datas, óbitos e infecções.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame contendo as informações de datas e óbitos.
 
-    Retorno
+    Returns
     -------
     pd.DataFrame
         Um novo DataFrame com as datas no formato desejado e a contagem de óbitos e infectados.
+
+    Exemplo
+    -------
+    >>> dados = {'ANO_IS': [2019, 2020, 2021], 'MES_IS': [1.0, 1.0, 4.0], 'OBITO': ['SIM', 'NÃO', 'IGN']}
+    >>> df = pd.DataFrame(dados)
+    >>> saida = organizar_df_datas(df)
+    >>> isinstance(saida, pd.DataFrame)
+    True
+    >>> set(saida['ANO_IS'].unique()) == {2019,2020,2021}
+    True
+    >>> set(saida['OBITO'].unique()) == {0,1}
+    True
+    >>> isinstance(saida['INFECTADOS'],pd.Series)
+    True
     """
     try:
-        # Para evitar erro, criamos uma cópia do DataFrame recebido
-        #df = df.copy()
-
         # Converte a coluna 'OBITO' em valores binários (0 ou 1)
         df['OBITO'] = df['OBITO'].apply(lambda x: 1 if x == 'SIM' else 0)
 
 
         df_datas = df[['ANO_IS', 'MES_IS', 'OBITO']]
         df_datas.insert(2, 'INFECTADOS', 1, True)  # Adiciona uma coluna para guardar a quantidade de infectados
+
         df_datas = df_datas.groupby(['ANO_IS', 'MES_IS']).sum()  # Agrupa o DataFrame por ano e mês
         df_datas = df_datas.reset_index()
         return df_datas
@@ -39,12 +50,12 @@ def organizar_df_ano(df: pd.DataFrame) -> pd.DataFrame:
     """
     Organiza um DataFrame relacionando a cada ano uma quantidade de casos e mortes por febre amarela.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame contendo informações de datas, infecções e mortes.
 
-    Retorno
+    Returns
     -------
     pd.DataFrame
         Um novo DataFrame com o número de infectados e mortos por ano.
@@ -64,15 +75,29 @@ def organizar_df_mes(df: pd.DataFrame) -> pd.DataFrame:
     """
     Organiza o DataFrame para facilitar uma análise específica, reduzindo os dados ao total de infecções e óbitos em relação aos meses do ano.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame contendo informações de datas, infecções e óbitos.
 
-    Retorno
+    Returns
     -------
     pd.DataFrame
         Um novo DataFrame com a contagem de óbitos e infecções em cada mês.
+
+    Exemplo
+    -------
+    >>> dados = {'ANO_IS': [2019, 2020, 2021], 'MES_IS': [1.0, 1.0, 4.0], 'OBITO': [1, 1, 0], 'INFECTADOS':[1, 1, 1]}
+    >>> df = pd.DataFrame(dados)
+    >>> saida = organizar_df_mes(df)
+    >>> meses = saida['MES_IS'].unique()
+    >>> set(meses) == {'abril','janeiro'}
+    True
+    >>> obitos = saida['OBITO']
+    >>> obitos[0] == 2
+    True
+    >>> saida['INFECTADOS'][1] == 1
+    True
     """
     try:
         df = lf.remover_coluna(df, 'ANO_IS')
@@ -97,15 +122,28 @@ def organizar_df_letalidade(df: pd.DataFrame) -> pd.DataFrame:
     Organiza o DataFrame para facilitar uma análise específica. Para isso,
     há a exclusão de colunas e adição de uma coluna referente à letalidade da doença.
 
-    Parâmetros
+    Parameters
     ----------
     df : pd.DataFrame
         DataFrame agrupado por ano contendo informações de óbitos e infectados.
 
-    Retorno
+    Returns
     -------
     pd.DataFrame
         Um novo DataFrame com uma relação de letalidade por ano.
+
+    Exemplo
+    -------
+    >>> dados = {'ANO_IS': [2019, 2020, 2021], 'OBITO': [10, 3, 30], 'INFECTADOS': [20, 15, 50]}
+    >>> df = pd.DataFrame(dados)
+    >>> saida = organizar_df_letalidade(df)
+    >>> letalidade = saida['LETALIDADE']
+    >>> letalidade.iloc[0] == 0.5
+    True
+    >>> letalidade.iloc[1] == 0.2
+    True
+    >>> letalidade.iloc[2] == 0.6
+    True
     """
     try:
         # Adição da coluna LETALIDADE

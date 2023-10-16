@@ -3,7 +3,8 @@ import pandas as pd
 import geopandas as gpd
 
 # Importa as funções que serão testadas
-from utils import carregar_dataframes, obitos_por_uf
+from utils import carregar_geodataframe, obitos_por_uf
+from limpfilt import carregar_dataframe
 
 class TestFuncoes(unittest.TestCase):
     def test_carregar_dataframes(self):
@@ -13,7 +14,8 @@ class TestFuncoes(unittest.TestCase):
         Verifica se a função carregar_dataframes carrega corretamente
         os DataFrames de óbitos e informações geoespaciais dos estados.
         """
-        df, states = carregar_dataframes()
+        df = carregar_dataframe('fa_casoshumanos_1994-2021.csv')
+        states = carregar_geodataframe()
         self.assertIsInstance(df, pd.DataFrame)  # Verifica se df é um DataFrame
         self.assertIsInstance(states, gpd.GeoDataFrame)  # Verifica se states é um GeoDataFrame
 
@@ -24,7 +26,8 @@ class TestFuncoes(unittest.TestCase):
         Verifica se a função obitos_por_uf calcula corretamente o número
         de óbitos por unidade federativa e retorna um GeoDataFrame válido.
         """
-        df, states = carregar_dataframes()
+        df = carregar_dataframe('fa_casoshumanos_1994-2021.csv')
+        states = carregar_geodataframe()
         gdf_obitos_uf = obitos_por_uf(df, states)
         self.assertIsInstance(gdf_obitos_uf, gpd.GeoDataFrame)  # Verifica se o resultado é um GeoDataFrame
 
