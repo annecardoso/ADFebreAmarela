@@ -130,13 +130,12 @@ def is_integer(value):
     except ValueError:
         return False
 
-def ftr_idades(df):   ############DOCTEST
+def ftr_idades(df):   
     """
     Recebe o dataframe e trata a coluna de idades.
     Valores não inteiros são tornados válidos e linhas com idades 0 
     e maiores que 130 são retiradas do dataframe principal e separados
     em um dataframe de erro.
-
 
     Parâmetros
     ----------
@@ -146,6 +145,19 @@ def ftr_idades(df):   ############DOCTEST
     -------
     pd.DataFrame
         Dataframe com as linhas contendo idades descartadas.
+    
+    Exemplos
+    -------
+    >>> dic2 = {'c1': [1,2,3], 'IDADE': [4,'0,6',6], 'c3': [7,8,9]}
+    >>> df3=pd.DataFrame(dic2)
+    >>> df3
+       c1 IDADE  c3
+    0   1     4   7
+    1   2   0,6   8
+    2   3     6   9
+    >>> ftr_idades(df3)
+       c1 IDADE  c3
+    1   2     0   8
     """
     df_erridade = df.loc[df['IDADE'].apply(lambda x: not is_integer(x))]
     df_erridade.loc[:,'IDADE'] = df_erridade['IDADE'].astype(str)
@@ -160,12 +172,26 @@ def ftr_idades(df):   ############DOCTEST
     return df_erridd
 
 
-#TODO: COLUNA DE MORTES
-#TODO: VERIFICAR COM UNIQUE ESTADOS, SEXO...
-#TODO: PARTE DE FILTRAGEM
+def rem_inv_obitos(df):
+    """
+    Remove linhas com valores inválidos na coluna de óbitos.
 
-#TODO VISU E ANALISES
-
+    Parâmetros
+    ----------
+    df : pd.DataFrame
+    
+    Exemplos
+    --------
+    >>> dic2 = {'c1': [1,2,3], 'OBITO': ['SIM',5,'NÃO'], 'c3': [7,8,9]}
+    >>> df2 = pd.DataFrame(dic2)
+    >>> rem_inv_obitos(df2)
+    >>> df2
+       c1 OBITO  c3
+    1   2     5   8
+    """
+    inv_obitos = df.query('OBITO != "NÃO" & OBITO != "SIM"')  #df com apenas linhas erradas de óbitos
+    df.drop(inv_obitos.index, inplace = True)
+    
 
 #######Funções de Filtragem
 
@@ -219,7 +245,49 @@ def adicionar_coluna(df, nome_coluna, arr_valores):
 
 
 
-def operacao_colunas(df, colunas, nova_coluna, operacao, custom_func=None):
+def remover_coluna(df, coluna):
+    """
+    Remove uma coluna específica de um DataFrame.
+
+    Parâmetros
+    ----------
+    df: pd.DataFrame
+        O dataframe original.
+    coluna : str
+        O nome da coluna a ser removida.
+
+    Retorno
+    -------
+    pd.DataFrame
+        O dataframe original com a coluna removida.
+
+    Exemplo
+    -------
+    >>> dic3 = {'a': [1, 2, 3],
+    ...         'b': [4, 5, 6],
+    ...         'c': [7, 8, 9]}
+    >>> df3 = pd.DataFrame(dic3)
+    
+    >>> df3 = remover_coluna(df3, 'b')
+    >>> df3
+       a  c
+    0  1  7
+    1  2  8
+    2  3  9
+    """
+    try:
+        if coluna in df.columns:
+            df = df.drop(coluna, axis=1)
+            return df
+        else:
+            raise KeyError(f"A coluna '{coluna}' não existe no dataframe.")
+    except Exception as expt:
+        print(f"Erro ao remover a coluna: {expt}")
+        return None
+
+
+
+def operacao_colunas(df, colunas, nova_coluna, operacao):
     """
     Realiza uma operação entre colunas do dataframe e cria uma nova coluna com o resultado.
 
@@ -234,7 +302,7 @@ def operacao_colunas(df, colunas, nova_coluna, operacao, custom_func=None):
         Nome da coluna que será criada para armazenar o resultado da operação.
     operacao : function ou str
         A operação a ser realizada. Pode ser uma função ou uma string ('+', '-', '*', '/', 'media', 'dvp', 'mediana', 'min', 'max').
-    custom_func : function, optional
+    custom_func : function
         Uma função customizada que pode ser usada como operação.
 
     Retorno
@@ -249,13 +317,10 @@ def operacao_colunas(df, colunas, nova_coluna, operacao, custom_func=None):
     ...         'c3': [7, 8, 9]}
     >>> df2 = pd.DataFrame(dic2)
     
-    >>> # Realiza a adição das colunas 
     >>> df2 = operacao_colunas(df2, ['c1', 'c2', 'c3'], 'Soma', '+')
     
-    >>> # Calcula a média das colunas
     >>> df2 = operacao_colunas(df2, ['c1', 'c2', 'c3'], 'Média', 'media')
     
-    >>> # Usa uma função personalizada
     >>> custom_function = lambda x: x['c1'] * 2 + x['c2'] - x['c3']
     >>> df2 = operacao_colunas(df2, ['c1', 'c2', 'c3'], 'Resultado', custom_function)
     >>> df2
@@ -279,8 +344,6 @@ def operacao_colunas(df, colunas, nova_coluna, operacao, custom_func=None):
                 df[nova_coluna] = colunas.diff(axis=1).fillna(colunas.iloc[:, 0])
             elif operacao == '*':
                 df[nova_coluna] = colunas.prod(axis=1)
-            elif operacao == '/':
-                df[nova_coluna] = colunas.apply(lambda x: x.prod(), axis=1)
             elif operacao == 'media':
                 df[nova_coluna] = colunas.mean(axis=1)
             elif operacao == 'dvp':
@@ -292,13 +355,81 @@ def operacao_colunas(df, colunas, nova_coluna, operacao, custom_func=None):
             elif operacao == 'min':
                 df[nova_coluna] = colunas.min(axis=1)
             else:
-                raise ValueError("Operação inválida. Escolha entre '+', '-', '*', '/', 'media', 'dvp', 'mediana, 'max' ou 'min")
+                raise ValueError("Operação inválida. Escolha entre '+', '-', '*', 'media', 'dvp', 'mediana, 'max' ou 'min")
         elif callable(operacao):
-            df[nova_coluna] = operacao(colunas)
+            df[nova_coluna] = operacao(colunas, colunas.columns)
         else:
             raise ValueError("O argumento 'operacao' deve ser uma função ou uma string.")
         
         return df
     except (KeyError, ValueError) as excp:
         print(f"Erro ao realizar a operação: {excp}")
+        return None
+
+
+
+def filtra_dados(df, colunas=None, linhas=None, nome_csv=None):
+    """
+    Filtra colunas ou linhas de um dataframe, gerando um novo dataframe com
+    os dados selecionados e opcionalmente os salva em um arquivo CSV.
+
+    Parâmetros
+    ----------
+    df : pd.DataFrame
+        Dataframe original.
+    colunas : list, dict, np.array, pd.Series
+        Colunas a serem selecionadas. Pode ser uma lista de nomes de colunas, um dicionário, np.array ou uma série Pandas.
+        Se não especificadas, todas as colunas são selecionadas.
+    linhas : slice, list, dict, np.array, pd.Series
+        Linhas a serem selecionadas. Pode ser uma slice, uma lista de índices, um dicionário, np.array ou uma série Pandas.
+        Se não especificadas, todas as linhas são selecionadas.
+    nome_csv : str
+        Nome do arquivo CSV para salvar os dados. Se fornecido, os dados serão salvos em um arquivo CSV com esse nome.
+
+    Retorno
+    -------
+    pd.DataFrame
+        Dataframe gerado com os dados selecionados.
+
+    Exemplo
+    -------
+    >>> dic5 = {'a': [1, 2, 3],
+    ...         'b': [4, 5, 6],
+    ...         'c': [7, 8, 9]}
+    >>> df5 = pd.DataFrame(dic5)
+    
+    >>> df_fil = filtra_dados(df, colunas=['a', 'b'])
+    >>> df_fil
+       a  b
+    0  1  4
+    1  2  5
+    2  3  6
+
+    >>> df_fil = filtra_dados(df, linhas=slice(1, 3))
+    >>> df_fil
+       a  b  c
+    1  2  5  8
+    2  3  6  9
+    """
+    try:
+        df_fil = df.copy()
+
+        if colunas is not None:
+            if isinstance(colunas, (list, dict, pd.Series, np.ndarray)):
+                df_fil = df_fil[colunas]
+            else:
+                raise ValueError("O argumento 'colunas' deve ser uma lista, dicionário, série ou array NumPy.")
+
+        if linhas is not None:
+            if isinstance(linhas, (slice, list, dict, pd.Series, np.ndarray)):
+                df_fil = df_fil[linhas]
+            else:
+                raise ValueError("O argumento 'linhas' deve ser uma slice, lista, dicionário, série ou array NumPy.")
+
+        if nome_csv:
+            df_fil.to_csv(nome_csv, index=False)
+
+        return df_fil
+    except Exception as expt:
+        print(f"Erro ao selecionar os dados: {expt}")
         return None
